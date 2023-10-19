@@ -1,0 +1,56 @@
+.window {
+  position: absolute;
+  top: 240px;
+  left: 686px;
+
+  display: flex;
+  justify-content: center;
+  border-radius: 34px;
+  background-color: rgb(255, 255, 255);
+  width: 654px;
+  height: 573px;
+  /* animation: zoomIn 0.25s; */
+}
+.windowHead {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border-radius: 34px 34px 0px 0px;
+  background-color: rgb(0, 0, 0);
+  width: 654px;
+  height: 83px;
+
+  color: rgb(248, 248, 248);
+  font-size: 32px;
+  font-weight: 400;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.windowBody {
+  position: absolute;
+  top: 100px;
+  /* left: 166px; */
+  border-width: 0px;
+  width: 100%;
+  height: 600px;
+  /* background-color: #a9b1bc; */
+
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+}
+
+.zoomIn {
+  animation: zoomIn 0.5s;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale3d(0.6, 0.6, 0.6);
+  }
+  50% {
+    opacity: 1;
+  }
+}

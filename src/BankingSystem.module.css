@@ -1,0 +1,14 @@
+.mainBackground {
+    position: relative;
+    width: 100%;
+    height: 1117px;
+    overflow: hidden;
+    background-image: url("./images/beach.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    text-align: left;
+    font-size: var(--font-size-21xl);
+    color: var(--color-lightslategray);
+    font-family: var(--font-metrophobic);
+  }
