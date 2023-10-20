@@ -59,7 +59,7 @@ let organizationLines = [
 
 function EmployeeCreateAccount(props) {
   let optionWindow = (
-    <Window title="Create Account" height="573px">
+    <Window title="Create Account" height="600px">
       <div>
         <div className={Styles.text}>Are you</div>
         <BlackButton text="Individual" clickHandler={individualClickHandler} />
@@ -75,7 +75,7 @@ function EmployeeCreateAccount(props) {
   const [selectedBody, setSelectedBody] = useState(optionWindow);
 
   let individualWindow = (
-    <Window title="Create Account for Individuals" height="690px">
+    <Window title="Create Account for Individuals" height="650px">
       <InputContainer
         lines={individualLines}
         button="Request"
@@ -89,7 +89,7 @@ function EmployeeCreateAccount(props) {
   );
 
   let organizationWindow = (
-    <Window title="Create Account for Organizations" height="690px">
+    <Window title="Create Account for Organizations" height="600px">
       <InputContainer
         lines={organizationLines}
         button="Request"
