@@ -53,7 +53,7 @@ function LoginPage(props) {
         />
 
         <button className={styles.loginButton} onClick={submitHandler}>
-          Login..
+          Login
         </button>
       </form>
 
