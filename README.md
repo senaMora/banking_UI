@@ -1,9 +1,5 @@
 # Core Banking System
 <h2>User Interfaces</h2>
-=======Thenu=======
-=======Sena=======
-<!-- cat -->
-
 
 <ol type="1">
   <li>Loging Page</li>
