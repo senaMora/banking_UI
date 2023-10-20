@@ -20,7 +20,7 @@ function EmployeeCusTransfer(props) {
         activeTab="Money Transfer"
         updateTab={(clickedTab) => props.updateTab(clickedTab)}
       >
-        <Window title="Transfer" height="573px">
+        <Window title="Transfer" height="600px">
           <InputContainer
             lines={lines}
             button="Transfer Money"
