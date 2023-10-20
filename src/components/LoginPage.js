@@ -1,5 +1,7 @@
+// change  in login page
 import React, { useState } from "react";
 import logo from "../images/logo.png";
+// second page in login page
 
 // import { FunctionComponent } from "react";
 import styles from "./LoginPage.module.css";
