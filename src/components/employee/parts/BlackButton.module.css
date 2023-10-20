@@ -1,5 +1,7 @@
 .blackButton {
   position: relative;
+  left: calc(50% - 166px);
+
   border-radius: 10px;
   width: 322px;
   height: 58px;
@@ -16,15 +18,18 @@
   transform: scale(1.1);
 }
 .text {
-    position: relative;
-    font-size: 18px;
-    color: rgb(0, 0, 0);
-    text-align: left;
-    
-    font-weight: bold;
-    margin-bottom: 5px;
-    margin-top: 15px;
+  position: relative;
+  left: calc(50% - 166px);
+
+  font-size: 18px;
+  color: rgb(0, 0, 0);
+  /* text-align: left; */
+
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin-top: 15px;
 }
 .or {
-    text-align: center;
+  left: calc(50% - 10px);
+  /* text-align: center; */
 }

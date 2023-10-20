@@ -16,7 +16,9 @@ function InputContainer(props) {
   if (props.type === "short") {
     content = props.lines.map((line, index) => (
       <div className={styles.subParent}>
-        <label className={styles.labelShort} key={index}>{line.label}</label>
+        <label className={styles.labelShort} key={index}>
+          {line.label}
+        </label>
         <input
           className={styles.inputShort}
           type={line.type}
@@ -73,8 +75,13 @@ function InputContainer(props) {
     <div className={styles.parentBox}>
       {content}
       <button
-        className={props.type === "long" ? styles.buttonLong : styles.buttonShort}
-        style={{ top: -50, height: props.type === "long" ? props.height : null }}
+        className={
+          props.type === "long" ? styles.buttonLong : styles.buttonShort
+        }
+        style={{
+          bottom: props.type === "short" ? 30 : null,
+          height: props.type === "long" ? props.height : null,
+        }}
         onClick={() => props.onSumbit(enteredDetails)}
       >
         {props.button}
