@@ -1,8 +1,5 @@
 # Core Banking System
 <h2>User Interfaces</h2>
-=======Harshana=======
-<!-- harshana test -->
-<!-- test 2 -->
 
 <ol type="1">
   <li>Loging Page</li>
