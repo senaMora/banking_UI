@@ -15,6 +15,7 @@ import EmployeeCusWithdrawal from "./components/employee/employeeCustomer/Employ
 import EmployeeCusLoan from "./components/employee/employeeCustomer/EmployeeCusLoan";
 import ErrorMessage from "./components/employee/parts/ErrorMessage";
 import EmployeeSuccess from "./components/employee/EmployeeSuccess";
+import ManagerLoanRequest from "./components/manager/ManagerLoanRequest";
 
 let employeeCusTabs = [
   "Dashboard",
@@ -31,6 +32,15 @@ let employeeTabs = [
   "Total Transaction Report",
   "Log Out",
 ];
+let managerTabs = [
+  "Dashboard",
+  "Select Account",
+  "Create Account",
+  "Total Transaction Report",
+  "Late Loan Instalment Report",
+  "Loan Request List",
+  "Log Out",
+];
 
 const details = [
   "Nimal",
@@ -45,8 +55,18 @@ const details = [
 
 function BankingSystem() {
   // control state of =====VIEW=====
+  // const [view, setView] = useState(
+  //   <LoginPage onSubmitCredentials={submitCredentialsHandler} />
+  // );
+
   const [view, setView] = useState(
-    <LoginPage onSubmitCredentials={submitCredentialsHandler} />
+    <ManagerLoanRequest
+      details={details}
+      tabs={managerTabs}
+      updateTab={employeeTabClickHandler}
+      onSumbitIndividualData={individualDataSumbitHandler}
+      onSumbitOrganizationData={organizationDataSumbitoHandler}
+    />
   );
 
   // Handle the Initial Login
@@ -186,7 +206,7 @@ function BankingSystem() {
           updateTab={employeeTabClickHandler}
         />
       );
-    } 
+    }
   }
 
   // handle deposit sumbits
