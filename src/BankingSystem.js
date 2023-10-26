@@ -15,6 +15,10 @@ import EmployeeCusWithdrawal from "./components/employee/employeeCustomer/Employ
 import EmployeeCusLoan from "./components/employee/employeeCustomer/EmployeeCusLoan";
 import ErrorMessage from "./components/employee/parts/ErrorMessage";
 import EmployeeSuccess from "./components/employee/EmployeeSuccess";
+import ManagerDashboard from "./components/manager/ManagerDashboard";
+import CustomerDashboard from "./components/customer/CustomerDashboard";
+import CustomerLoanRequest from "./components/customer/CustomerLoanRequest";
+
 
 let employeeCusTabs = [
   "Dashboard",
@@ -31,6 +35,16 @@ let employeeTabs = [
   "Total Transaction Report",
   "Log Out",
 ];
+let managerTabs = [
+  "Dashboard",
+  "Select Account",
+  "Create Account",
+  "Total Transaction Report",
+  "Late Loan Installment Report",
+  "Loan Request List",
+  "Log Out",
+];
+let customerTabs = ["Dashboard", "Loan Request", "Money Transfer", "Log Out"];
 
 const details = [
   "Nimal",
@@ -43,11 +57,43 @@ const details = [
   "1990-01-01",
 ];
 
+let transactionReportData = [
+  ["Savings ", "Rs. 10000", "Rs. 10000", "100"],
+  ["checking ", "Rs. 10000", "Rs. 10000", "100"],
+  ["with ", "Rs. 10000", "Rs. 10000", "100"],
+];
+
 function BankingSystem() {
   // control state of =====VIEW=====
+
   const [view, setView] = useState(
-    <LoginPage onSubmitCredentials={submitCredentialsHandler} />
+    <CustomerLoanRequest
+      details={details}
+      tabs={customerTabs}
+      updateTab={employeeTabClickHandler}
+      onSumbitLoanData={loanSubmitHandler}
+    />
   );
+
+  // const [view, setView] = useState(
+  //   <CustomerDashboard
+  //     details={details}
+  //     tabs={customerTabs}
+  //     updateTab={employeeTabClickHandler}
+  //   />
+  // );
+
+  // const [view, setView] = useState(
+  //   <ManagerDashboard
+  //     details={details}
+  //     tabs={managerTabs}
+  //     updateTab={employeeTabClickHandler}
+  //   />
+  // );
+
+  // const [view, setView] = useState(
+  //   <LoginPage onSubmitCredentials={submitCredentialsHandler} />
+  // );
 
   // Handle the Initial Login
   function submitCredentialsHandler(credentials) {
@@ -118,6 +164,7 @@ function BankingSystem() {
         <EmployeeTransactionReport
           details={details}
           tabs={employeeTabs}
+          dataRows={transactionReportData}
           updateTab={employeeTabClickHandler}
         />
       );
@@ -186,7 +233,7 @@ function BankingSystem() {
           updateTab={employeeTabClickHandler}
         />
       );
-    } 
+    }
   }
 
   // handle deposit sumbits
