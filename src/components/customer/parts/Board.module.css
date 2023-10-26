@@ -1,0 +1,67 @@
+.board {
+  position: absolute;
+  top: calc(50% - 493.5px);
+  left: calc(50% - 790px);
+  border-radius: 64px;
+  background-color: rgba(20, 23, 54, 0.66);
+  width: 1580px;
+  height: 987px;
+}
+.logo {
+  position: absolute;
+  top: 40px;
+  left: 1340px;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 100px;
+}
+.title {
+  position: absolute;
+  top: 70px;
+  right: 270px;
+  text-align: right;
+  font-size: 60px;
+  display: inline-block;
+  width: 100%;
+  height: 95px;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  text-wrap: nowrap;
+}
+.subTitle {
+  position: absolute;
+  top: 150px;
+  right: 270px;
+  text-align: right;
+  font-size: 50px;
+  display: inline-block;
+  width: 100%;
+  height: 95px;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  text-wrap: nowrap;
+}
+
+.pane {
+  position: absolute;
+  border-radius: 64px 0px 0px 64px;
+  background-color: rgba(255, 255, 255, 0.360);
+  width: 480px;
+  height: 987px;
+}
+.paneBox {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  position: absolute;
+  top: 229px;
+  left: 42px;
+  border: 0px;
+  box-sizing: border-box;
+  width: 436px;
+  height: 692px;
+  color: rgb(0, 0, 0);
+  /* background-color: rgba(20, 23, 54, 0.66); */
+}
