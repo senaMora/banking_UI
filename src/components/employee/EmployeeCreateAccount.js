@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Styles from "./parts/BlackButton.module.css";
 
 import Board from "./parts/Board";
@@ -58,6 +58,34 @@ let organizationLines = [
 ];
 
 function EmployeeCreateAccount(props) {
+  function individualSubmitHandler(enteredDetails) {
+    const dummyData = {
+      customerId: 1,
+      branchId: 1,
+      balance: 5000.0,
+      accType: "checking",
+    };
+
+    fetch("http://localhost:8002/account/create", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(dummyData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        // handle the response data here
+      })
+      .catch((error) => {
+        console.log(error);
+        // handle the error here
+      });
+    console.log("<end of fetch>");
+    props.onSumbitIndividualData(enteredDetails);
+  }
+
   let optionWindow = (
     <Window title="Create Account" height="600px">
       <div>
@@ -81,9 +109,7 @@ function EmployeeCreateAccount(props) {
         button="Request"
         type="long"
         height="60px"
-        onSumbit={(enteredDetails) =>
-          props.onSumbitIndividualData(enteredDetails)
-        }
+        onSumbit={individualSubmitHandler}
       />
     </Window>
   );
@@ -128,5 +154,3 @@ function EmployeeCreateAccount(props) {
 }
 
 export default EmployeeCreateAccount;
-
-
