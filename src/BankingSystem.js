@@ -15,6 +15,8 @@ import EmployeeCusWithdrawal from "./components/employee/employeeCustomer/Employ
 import EmployeeCusLoan from "./components/employee/employeeCustomer/EmployeeCusLoan";
 import ErrorMessage from "./components/employee/parts/ErrorMessage";
 import EmployeeSuccess from "./components/employee/EmployeeSuccess";
+import ManagerLateLoan from "./components/manager/ManagerLateLoan";
+import ManagerLLPreview from "./components/manager/ManagerLLPreview";
 
 let employeeCusTabs = [
   "Dashboard",
@@ -45,8 +47,18 @@ const details = [
 
 function BankingSystem() {
   // control state of =====VIEW=====
+  /*
   const [view, setView] = useState(
     <LoginPage onSubmitCredentials={submitCredentialsHandler} />
+  );
+  */
+
+  const [view, setView] = useState(
+    <ManagerLLPreview
+      details={details}
+      tabs={employeeTabs}
+      updateTab={employeeTabClickHandler}
+    />
   );
 
   // Handle the Initial Login
