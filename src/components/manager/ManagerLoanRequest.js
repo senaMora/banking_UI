@@ -75,7 +75,7 @@ function ManagerLoanRequest(props) {
   function loanDetailsHandler(index) {
     let newWindow = (
       <Window title="Loan Details" height="600px">
-        <DashboardList labels={labels} details={dummyData1} />
+        <DashboardList labels={labels} details={loanDetails[index]} />
       </Window>
     );
     setSelectedBody(newWindow);
