@@ -18,7 +18,7 @@ import EmployeeSuccess from "./components/employee/EmployeeSuccess";
 import ManagerDashboard from "./components/manager/ManagerDashboard";
 import CustomerDashboard from "./components/customer/CustomerDashboard";
 import CustomerLoanRequest from "./components/customer/CustomerLoanRequest";
-import CustomerTransfer from "./components/customer/CustomerTransfer";
+import ManagerLoanRequest from "./components/manager/ManagerLoanRequest";import CustomerTransfer from "./components/customer/CustomerTransfer";
 
 
 let employeeCusTabs = [
@@ -65,17 +65,10 @@ let transactionReportData = [
 ];
 
 function BankingSystem() {
-  // control state of =====VIEW=====
-
-  const [view, setView] = useState(
-    <CustomerTransfer
-      details={details}
-      tabs={customerTabs}
-      updateTab={employeeTabClickHandler}
-      onSumbitLoanData={loanSubmitHandler}
-    />
-  );
-
+  // control state of =====VIEW====
+  // const [view, setView] = useState(
+  //   <LoginPage onSubmitCredentials={submitCredentialsHandler} />
+  // );
   // const [view, setView] = useState(
   //   <CustomerLoanRequest
   //     details={details}
@@ -101,6 +94,13 @@ function BankingSystem() {
   //   />
   // );
 
+  const [view, setView] = useState(
+    <ManagerLoanRequest
+      tabs={managerTabs}
+      updateTab={managerTabClickHandler}
+    />
+  );
+
   // const [view, setView] = useState(
   //   <LoginPage onSubmitCredentials={submitCredentialsHandler} />
   // );
@@ -120,6 +120,15 @@ function BankingSystem() {
           details={details}
           tabs={employeeTabs}
           updateTab={employeeTabClickHandler}
+        />
+      );
+    }else if (  credentials.enteredUsername === "b" // && credentials.enteredPassword === ""  
+    ) {
+      setView(
+        <ManagerDashboard
+          details={details}
+          tabs={managerTabs}
+          updateTab={managerTabClickHandler}
         />
       );
     } else {
@@ -179,6 +188,51 @@ function BankingSystem() {
           tabs={employeeTabs}
           dataRows={transactionReportData}
           updateTab={employeeTabClickHandler}
+        />
+      );
+    } else if (clickedTab === "Log Out") {
+      setView(<LoginPage onSubmitCredentials={submitCredentialsHandler} />);
+    }
+  }
+
+  // Hande the Manager Dashboard Tabs
+  function managerTabClickHandler(clickedTab) {
+    console.log(clickedTab);
+    console.log("<3>");
+
+    if (clickedTab === "Dashboard") {
+      setView(
+        <ManagerDashboard
+          details={details}
+          tabs={managerTabs}
+          updateTab={managerTabClickHandler}
+        />
+      );
+    } else if (clickedTab === "Select Account") {
+      setView(
+        <EmployeeSelectAccount
+          updateTab={managerTabClickHandler}
+          tabs={managerTabs}
+          onSumbitSelectAccount={selectAccountSubmitHandler}
+        />
+      );
+    } else if (clickedTab === "Create Account") {
+      setView(
+        <EmployeeCreateAccount
+          details={details}
+          tabs={managerTabs}
+          updateTab={managerTabClickHandler}
+          onSumbitIndividualData={individualDataSumbitHandler}
+          onSumbitOrganizationData={organizationDataSumbitoHandler}
+        />
+      );
+    } else if (clickedTab === "Total Transaction Report") {
+      setView(
+        <EmployeeTransactionReport
+          details={details}
+          tabs={managerTabs}
+          dataRows={transactionReportData}
+          updateTab={managerTabClickHandler}
         />
       );
     } else if (clickedTab === "Log Out") {
