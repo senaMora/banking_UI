@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { VariableSizeList as List } from "react-window";
 
+import Styles2 from "./ManagerLoanRequest.css"; // Import your CSS file
 import Styles from "../employee/parts/BlackButton.module.css";
 
 import Board from "../employee/parts/Board";
@@ -75,7 +76,23 @@ function ManagerLoanRequest(props) {
   function loanDetailsHandler(index) {
     let newWindow = (
       <Window title="Loan Details" height="600px">
-        <DashboardList labels={labels} details={loanDetails[index]} />
+        <div>
+          <div className="nameContainer">
+            {labels.map((label, index) => (
+              <p className={Styles2.label} key={index}>
+                {label} :
+              </p>
+            ))}
+          </div>
+
+          <div className="detailContainer">
+            {loanDetails[index].map((detail, index) => (
+              <p className={Styles2.label} key={index}>
+                {detail}
+              </p>
+            ))}
+          </div>
+        </div>
       </Window>
     );
     setSelectedBody(newWindow);
