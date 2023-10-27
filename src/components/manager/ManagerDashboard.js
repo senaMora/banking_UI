@@ -14,6 +14,7 @@ function ManagerDashboard(props) {
     "Telephone No",
     "Date of Birth",
   ];
+  
 
   return (
     <div>
