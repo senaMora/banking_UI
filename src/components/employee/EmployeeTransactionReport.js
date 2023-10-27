@@ -1,8 +1,16 @@
 import React from "react";
 
+import Styles2 from "./parts/EmployeeTransaction.css";
+
+import Table from "./parts/table.css";
+
 import Board from "./parts/Board";
 import Window from "./parts/Window";
 // import InputContainer from "./parts/InputContainer";
+
+const labels = ["Report ID  ", "Branch ID  ", "Date Range "];
+
+const dummyData = ["12345", "Branch123", "01/01/2023 - 12/31/2023"];
 
 function EmployeeTransactionReport(props) {
   return (
@@ -16,7 +24,7 @@ function EmployeeTransactionReport(props) {
       >
         <Window title="Total Transaction Report" height="573px">
           {/* should complete================ */}
-          <table>
+          <table className="custom-table">
             <thead>
               <tr>
                 <th>Account Type</th>
@@ -35,6 +43,24 @@ function EmployeeTransactionReport(props) {
               ))}
             </tbody>
           </table>
+          <div>
+            <div className="nameContainer">
+              {labels.map((label, index) => (
+                <p className={Styles2.label} key={index}>
+                  {label} :
+                </p>
+              ))}
+            </div>
+
+            <div className="detailContainer">
+              {dummyData.map((detail, index) => (
+                <p className={Styles2.label} key={index}>
+                  {detail}
+                </p>
+              ))}
+            </div>
+          </div>
+          <button className="blackButton2">Print</button>
         </Window>
       </Board>
     </div>

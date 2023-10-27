@@ -1,0 +1,75 @@
+.nameContainer {
+    position: absolute;
+    top: 200px;
+    left: 30px;
+    display: inline-block;
+    text-align: left;
+    width: 237px;
+    height: 434px;
+    font-family: "Arial";
+    color: black;
+    font-size: 19px;
+    font-weight: bold;
+    line-height: 0.5; /* Adjust the line-height to decrease space between lines of text */
+  }
+  
+  .detailContainer {
+    position: absolute;
+    top: 200px;
+    left: 167px;
+    display: inline-block;
+    text-align: left;
+    width: 750px;
+    height: 434px;
+    font-family: "Arial";
+    color: black;
+    font-size: 19px;
+    line-height: 0.5; /* Adjust the line-height to decrease space between lines of text */
+  }
+
+  .blackButton1, .blackButton2 {
+    position: relative;
+    border-radius: 10px;
+    width: 152px;
+    height: 70px;
+    background-color: black;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 24px;
+    color: white;
+  }
+  
+  .blackButton1:hover {
+    background-color: rgba(0, 0, 0, 0.829);
+    transform: scale(1.1);
+  }
+  .blackButton2:hover {
+    background-color: rgba(0, 0, 0, 0.829);
+    transform: scale(1.1);
+  }
+  
+  .text {
+    position: relative;
+    top: 0px;
+    left: calc(50% - 166px);
+    font-size: 18px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin-top: 15px;
+  }
+  
+  .or {
+    left: calc(50% - 10px);
+  }
+  
+  .blackButton1 {
+    top: 185px;
+    left: calc(50% - 480px);
+  }
+  
+  .blackButton2 {
+    top: 150px;
+    left: calc(50% - 150px);
+  }

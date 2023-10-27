@@ -93,7 +93,11 @@ function ManagerLoanRequest(props) {
             ))}
           </div>
         </div>
-        <button className="blackButton" onClick={loanDetailsHandler}>
+
+        <button className="blackButton1" onClick={loanDetailsHandler}>
+          Reject
+        </button>
+        <button className="blackButton2" onClick={loanDetailsHandler}>
           Approve
         </button>
       </Window>
