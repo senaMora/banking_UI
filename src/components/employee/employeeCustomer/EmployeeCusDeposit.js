@@ -13,8 +13,8 @@ function EmployeeCusDeposit(props) {
   return (
     <div>
       <Board
-        title=""
-        subTitle="Cash Deposit"
+        title="Cash Deposit"
+        subTitle={"< "+ props.details[0] +" >"}
         tabs={props.tabs}
         activeTab="Cash Deposit"
         updateTab={(clickedTab) => props.updateTab(clickedTab)}
