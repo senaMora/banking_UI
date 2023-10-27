@@ -18,7 +18,8 @@ import EmployeeSuccess from "./components/employee/EmployeeSuccess";
 import ManagerDashboard from "./components/manager/ManagerDashboard";
 import CustomerDashboard from "./components/customer/CustomerDashboard";
 import CustomerLoanRequest from "./components/customer/CustomerLoanRequest";
-import ManagerLoanRequest from "./components/manager/ManagerLoanRequest";
+import ManagerLoanRequest from "./components/manager/ManagerLoanRequest";import CustomerTransfer from "./components/customer/CustomerTransfer";
+
 
 let employeeCusTabs = [
   "Dashboard",
@@ -107,6 +108,9 @@ function BankingSystem() {
   // Handle the Initial Login
   function submitCredentialsHandler(credentials) {
     console.log(credentials);
+
+    
+
     if (
       credentials.enteredUsername === "a" // &&
       // credentials.enteredPassword === ""
