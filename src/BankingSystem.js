@@ -18,6 +18,7 @@ import EmployeeSuccess from "./components/employee/EmployeeSuccess";
 import ManagerDashboard from "./components/manager/ManagerDashboard";
 import CustomerDashboard from "./components/customer/CustomerDashboard";
 import CustomerLoanRequest from "./components/customer/CustomerLoanRequest";
+import CustomerTransfer from "./components/customer/CustomerTransfer";
 
 
 let employeeCusTabs = [
@@ -67,13 +68,22 @@ function BankingSystem() {
   // control state of =====VIEW=====
 
   const [view, setView] = useState(
-    <CustomerLoanRequest
+    <CustomerTransfer
       details={details}
       tabs={customerTabs}
       updateTab={employeeTabClickHandler}
       onSumbitLoanData={loanSubmitHandler}
     />
   );
+
+  // const [view, setView] = useState(
+  //   <CustomerLoanRequest
+  //     details={details}
+  //     tabs={customerTabs}
+  //     updateTab={employeeTabClickHandler}
+  //     onSumbitLoanData={loanSubmitHandler}
+  //   />
+  // );
 
   // const [view, setView] = useState(
   //   <CustomerDashboard
@@ -98,6 +108,9 @@ function BankingSystem() {
   // Handle the Initial Login
   function submitCredentialsHandler(credentials) {
     console.log(credentials);
+
+    
+
     if (
       credentials.enteredUsername === "a" // &&
       // credentials.enteredPassword === ""

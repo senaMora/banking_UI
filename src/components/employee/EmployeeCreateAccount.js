@@ -37,7 +37,6 @@ let organizationLines = [
   { label: "Organization ID :", type: "text" },
   { label: "Branch ID :", type: "text" },
   { label: "Address :", type: "text" },
-  { label: "Initial Amount :", type: "number" },
   { label: "Email :", type: "text" },
   { label: "Telephone No :", type: "text" },
   { label: "Name of Contact Person :", type: "text" },
