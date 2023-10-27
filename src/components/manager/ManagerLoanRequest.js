@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { VariableSizeList as List } from "react-window";
 
-import Styles2 from "./ManagerLoanRequest.css"; // Import your CSS file
-import Styles from "../employee/parts/BlackButton.module.css";
+import Styles2 from "./ManagerLoanRequest.css";
+import Styles from "./BlackButton.css";
 
 import Board from "../employee/parts/Board";
 import Window from "../employee/parts/Window";
@@ -93,6 +93,9 @@ function ManagerLoanRequest(props) {
             ))}
           </div>
         </div>
+        <button className="blackButton" onClick={loanDetailsHandler}>
+          Approve
+        </button>
       </Window>
     );
     setSelectedBody(newWindow);

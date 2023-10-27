@@ -18,8 +18,8 @@ import EmployeeSuccess from "./components/employee/EmployeeSuccess";
 import ManagerDashboard from "./components/manager/ManagerDashboard";
 import CustomerDashboard from "./components/customer/CustomerDashboard";
 import CustomerLoanRequest from "./components/customer/CustomerLoanRequest";
-import ManagerLoanRequest from "./components/manager/ManagerLoanRequest";import CustomerTransfer from "./components/customer/CustomerTransfer";
-
+import ManagerLoanRequest from "./components/manager/ManagerLoanRequest";
+import CustomerTransfer from "./components/customer/CustomerTransfer";
 
 let employeeCusTabs = [
   "Dashboard",
@@ -65,10 +65,10 @@ let transactionReportData = [
 ];
 
 function BankingSystem() {
-  // control state of =====VIEW====
-  // const [view, setView] = useState(
-  //   <LoginPage onSubmitCredentials={submitCredentialsHandler} />
-  // );
+  //control state of =====VIEW====
+  const [view, setView] = useState(
+    <LoginPage onSubmitCredentials={submitCredentialsHandler} />
+  );
   // const [view, setView] = useState(
   //   <CustomerLoanRequest
   //     details={details}
@@ -94,13 +94,6 @@ function BankingSystem() {
   //   />
   // );
 
-  const [view, setView] = useState(
-    <ManagerLoanRequest
-      tabs={managerTabs}
-      updateTab={managerTabClickHandler}
-    />
-  );
-
   // const [view, setView] = useState(
   //   <LoginPage onSubmitCredentials={submitCredentialsHandler} />
   // );
@@ -108,8 +101,6 @@ function BankingSystem() {
   // Handle the Initial Login
   function submitCredentialsHandler(credentials) {
     console.log(credentials);
-
-    
 
     if (
       credentials.enteredUsername === "a" // &&
@@ -122,7 +113,8 @@ function BankingSystem() {
           updateTab={employeeTabClickHandler}
         />
       );
-    }else if (  credentials.enteredUsername === "b" // && credentials.enteredPassword === ""  
+    } else if (
+      credentials.enteredUsername === "b" // && credentials.enteredPassword === ""
     ) {
       setView(
         <ManagerDashboard
@@ -226,6 +218,13 @@ function BankingSystem() {
           onSumbitOrganizationData={organizationDataSumbitoHandler}
         />
       );
+    } else if (clickedTab === "Loan Request List") {
+      setView(
+        <ManagerLoanRequest
+          updateTab={managerTabClickHandler}
+          tabs={managerTabs}
+        />
+      );
     } else if (clickedTab === "Total Transaction Report") {
       setView(
         <EmployeeTransactionReport
@@ -284,12 +283,11 @@ function BankingSystem() {
           onSumbitTransferData={transferSubmitHandler}
         />
       );
-    } else if (clickedTab === "Loan Request") {
+    } else if (clickedTab === "Loan Request List") {
       setView(
-        <EmployeeCusLoan
+        <ManagerLoanRequest
           updateTab={emplyeeCusTabClickHandler}
           tabs={employeeCusTabs}
-          onSumbitLoanData={loanSubmitHandler}
         />
       );
     } else if (clickedTab === "Log Out") {
