@@ -114,7 +114,8 @@ function BankingSystem() {
         />
       );
     } else if (
-      credentials.enteredUsername === "b" // && credentials.enteredPassword === ""
+      credentials.enteredUsername === "b"
+      // && credentials.enteredPassword === ""
     ) {
       setView(
         <ManagerDashboard
