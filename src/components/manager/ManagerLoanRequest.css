@@ -1,4 +1,4 @@
-.nameContainer {
+.nameContainer2 {
   position: absolute;
   top: 0px;
   left: 50px;
@@ -13,7 +13,7 @@
   line-height: 0.5; /* Adjust the line-height to decrease space between lines of text */
 }
 
-.detailContainer {
+.detailContainer2 {
   position: absolute;
   top: 0px;
   left: 357px;

@@ -1,6 +1,6 @@
 import React from "react";
 
-import Styles2 from "./parts/EmployeeTransaction.css";
+import Styles2 from "./EmployeeTransaction.css";
 
 import Table from "./parts/table.css";
 

@@ -77,7 +77,7 @@ function ManagerLoanRequest(props) {
     let newWindow = (
       <Window title="Loan Details" height="600px">
         <div>
-          <div className="nameContainer">
+          <div className="nameContainer2">
             {labels.map((label, index) => (
               <p className={Styles2.label} key={index}>
                 {label} :
@@ -85,7 +85,7 @@ function ManagerLoanRequest(props) {
             ))}
           </div>
 
-          <div className="detailContainer">
+          <div className="detailContainer2">
             {loanDetails[index].map((detail, index) => (
               <p className={Styles2.label} key={index}>
                 {detail}
@@ -94,10 +94,10 @@ function ManagerLoanRequest(props) {
           </div>
         </div>
 
-        <button className="blackButton1" onClick={loanDetailsHandler}>
+        <button className="blackButton3" onClick={loanDetailsHandler}>
           Reject
         </button>
-        <button className="blackButton2" onClick={loanDetailsHandler}>
+        <button className="blackButton4" onClick={loanDetailsHandler}>
           Approve
         </button>
       </Window>
