@@ -62,7 +62,7 @@ const dummyData2 = [
   "05/20/1995",
 ];
 
-const myList = [1, 2];
+const bankID = [1, 2];
 
 const loanDetails = [dummyData1, dummyData2];
 
@@ -106,8 +106,8 @@ function ManagerLoanRequest(props) {
   }
 
   const Row = ({ index, style }) => (
-    <button style={style} onClick={() => loanDetailsHandler(index)}>
-      {myList[index]}
+    <button className="buttonStyle" onClick={() => loanDetailsHandler(index)}>
+      Loan ID : {bankID[index]}
     </button>
   );
 
@@ -122,8 +122,8 @@ function ManagerLoanRequest(props) {
       >
         <Window title="Loan Request List" height="600px">
           <List
-            height={450}
-            itemCount={myList.length}
+            height={70*bankID.length}
+            itemCount={bankID.length}
             itemSize={getItemSize}
             width={650}
           >

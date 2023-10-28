@@ -27,4 +27,9 @@
   line-height: 0.5; /* Adjust the line-height to decrease space between lines of text */
 }
 
-
+.buttonStyle {
+  width: 650px;
+  height: 70px;
+  text-align: left;
+  font-size: 20px;
+}
