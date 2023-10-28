@@ -64,16 +64,28 @@ let transactionReportData = [
   ["with ", "Rs. 10000", "Rs. 10000", "100"],
 ];
 
+let LateLoanInstallmentReportData = [
+  ["089895 ", "10/10/2023", "10/11/2023", "Rs. 10000",],
+  ["786876 ", "13/10/2023", "13/11/2023", "Rs. 10000",],
+  ["687684 ", "23/11/2024", "23/12/2023", "Rs. 10000",],
+];
+
+
 function BankingSystem() {
   // control state of =====VIEW=====
+
+  // const [view, setView] = useState(
+  //   <ManagerLLPreview
+  //     dataRows={LateLoanInstallmentReportData}
+  //     updateTab={employeeTabClickHandler}
+  //     onSumbitLoanData={loanSubmitHandler}
+  //   />
+  // );
+  
+  
   const [view, setView] = useState(
-    <CustomerLoanRequest
-      details={details}
-      tabs={customerTabs}
-      updateTab={employeeTabClickHandler}
-      onSumbitLoanData={loanSubmitHandler}
-    />
-  );
+    <LoginPage onSubmitCredentials={submitCredentialsHandler}/>
+  );
 
   // Handle the Initial Login
   function submitCredentialsHandler(credentials) {

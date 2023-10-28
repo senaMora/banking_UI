@@ -2,10 +2,8 @@ import React from "react";
 
 import Board from "../employee/parts/Board";
 import Window from "../employee/parts/Window";
-import Table from "../employee/parts/Table";
 
 function ManagerLLPreview(props) {
-
   return (
     <div>
       <Board
@@ -16,8 +14,27 @@ function ManagerLLPreview(props) {
         updateTab={(clickedTab) => props.updateTab(clickedTab)}
       >
         <Window title="Late Loan Installment Report" height="573px">
-        <Table/>
-      </Window>
+            {/* should complete================ */}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Account No</th>
+                        <th>Due Date</th>
+                        <th>Installment Date</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {props.dataRows.map((dataRow, index) => (
+                    <tr>
+                    {dataRow.map((data, index) => (
+                        <td>{data}</td>
+                    ))}
+                    </tr>
+                ))}
+                </tbody>
+            </table>
+        </Window>
       </Board>
     </div>
   );

@@ -1,58 +1,76 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import logo from "../images/logo.png";
-
-// import { FunctionComponent } from "react";
 import styles from "./LoginPage.module.css";
+import bcrypt from "bcryptjs";
 
 function LoginPage(props) {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const emailInputRef = useRef();
+  const passwordInputRef = useRef();
 
   const [labelUsername, setLabelUsername] = useState("username");
   const [labelPassword, setLabelPassword] = useState("password");
 
   function usernameClickHandler(event) {
-    setUsername(event.target.value);
     setLabelUsername("");
-    console.log(username);
   }
+
   function passwordClickHandler(event) {
-    setPassword(event.target.value);
     setLabelPassword("");
   }
-  // function for Handle submit 
+
   function submitHandler(event) {
     event.preventDefault();
 
-    const credentials = {
-      enteredUsername: username,
-      enteredPassword: password,
-    };
-    props.onSubmitCredentials(credentials);
-    setUsername("");
-    setPassword("");
+    const email = emailInputRef.current.value;
+    const password = passwordInputRef.current.value;
+    const hashedPassword = bcrypt.hashSync(password, 10); // hash the password using bcrypt
+
+    fetch("https://example.com/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email,
+        password: hashedPassword, // send the hashed password to the backend
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // handle the response from the backend
+        props.onSubmitCredentials(data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+
+    // clear the input fields and labels
+    emailInputRef.current.value = "";
+    passwordInputRef.current.value = "";
     setLabelUsername("username");
     setLabelPassword("password");
-  };
+  }
 
   return (
     <div className={styles.loginFrame}>
       <div className={styles.pane} />
-      <form>
+      <form onSubmit={submitHandler}>
         <input
           type="text"
-          value={username}
           className={styles.usernameInput}
+          placeholder={labelUsername}
           onChange={usernameClickHandler}
+          ref={emailInputRef}
         />
         <input
-          type="text"
-          value={password}
+          type="password"
           className={styles.passwordInput}
+          placeholder={labelPassword}
           onChange={passwordClickHandler}
+          ref={passwordInputRef}
         />
 
-        <button className={styles.loginButton} onClick={submitHandler}>
+        <button className={styles.loginButton} type="submit">
           Login
         </button>
       </form>
@@ -70,4 +88,5 @@ function LoginPage(props) {
     </div>
   );
 }
+
 export default LoginPage;

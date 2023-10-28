@@ -1,7 +1,7 @@
 import React from "react";
 
-import Board from "./parts/Board";
-import Window from "./parts/Window";
+import Board from "../employee/parts/Board";
+import Window from "../employee/parts/Window";
 // import InputContainer from "./parts/InputContainer";
 
 function EmployeeTransactionReport(props) {
