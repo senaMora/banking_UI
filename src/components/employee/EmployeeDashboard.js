@@ -18,8 +18,8 @@ function EmployeeDashboard(props) {
   return (
     <div>
       <Board
-        title="Dashboard"
-        subTitle=""
+        title="Employee Dashboard"
+        subTitle={props.details[0]}
         tabs={props.tabs}
         activeTab="Dashboard"
         updateTab={(clickedTab) => props.updateTab(clickedTab)}

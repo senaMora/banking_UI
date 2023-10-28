@@ -1,0 +1,35 @@
+.blackButton {
+  position: relative;
+  left: calc(50% - 166px);
+
+  border-radius: 10px;
+  width: 322px;
+  height: 58px;
+  background-color: black;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+
+  font-size: 24px;
+  color: white;
+}
+.blackButton:hover {
+  background-color: rgba(0, 0, 0, 0.829);
+  transform: scale(1.1);
+}
+.text {
+  position: relative;
+  left: calc(50% - 166px);
+
+  font-size: 18px;
+  color: rgb(0, 0, 0);
+  /* text-align: left; */
+
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin-top: 15px;
+}
+.or {
+  left: calc(50% - 10px);
+  /* text-align: center; */
+}

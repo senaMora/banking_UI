@@ -16,6 +16,25 @@ function EmployeeTransactionReport(props) {
       >
         <Window title="Total Transaction Report" height="573px">
           {/* should complete================ */}
+          <table>
+            <thead>
+              <tr>
+                <th>Account Type</th>
+                <th>Paid Out</th>
+                <th>Deposited</th>
+                <th>Transactions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {props.dataRows.map((dataRow, index) => (
+                <tr>
+                  {dataRow.map((data, index) => (
+                    <td>{data}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </Window>
       </Board>
     </div>
