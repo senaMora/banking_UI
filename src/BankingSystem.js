@@ -74,6 +74,15 @@ let LateLoanInstallmentReportData = [
 function BankingSystem() {
   // control state of =====VIEW=====
 
+  const [view, setView] = useState(
+    <CustomerLoanRequest
+      details={details}
+      tabs={customerTabs}
+      updateTab={employeeTabClickHandler}
+      onSumbitLoanData={loanSubmitHandler}
+    />
+  );
+
   // const [view, setView] = useState(
   //   <ManagerLLPreview
   //     dataRows={LateLoanInstallmentReportData}
@@ -81,11 +90,18 @@ function BankingSystem() {
   //     onSumbitLoanData={loanSubmitHandler}
   //   />
   // );
-  
-  
-  const [view, setView] = useState(
-    <LoginPage onSubmitCredentials={submitCredentialsHandler}/>
-  );
+
+  // const [view, setView] = useState(
+  //   <ManagerDashboard
+  //     details={details}
+  //     tabs={managerTabs}
+  //     updateTab={employeeTabClickHandler}
+  //   />
+  // );
+
+  // const [view, setView] = useState(
+  //   <LoginPage onSubmitCredentials={submitCredentialsHandler} />
+  // );
 
   // Handle the Initial Login
   function submitCredentialsHandler(credentials) {
@@ -288,6 +304,7 @@ function BankingSystem() {
   // handle individual account sumbits
   function individualDataSumbitHandler(individualDetails) {
     console.log(individualDetails);
+
     setView(
       <EmployeeSuccess
         title=""

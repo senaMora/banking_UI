@@ -64,6 +64,7 @@ function LoginPage(props) {
         />
         <input
           type="password"
+          value={password}
           className={styles.passwordInput}
           placeholder={labelPassword}
           onChange={passwordClickHandler}

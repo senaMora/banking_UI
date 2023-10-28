@@ -14,8 +14,8 @@ function EmployeeCusTransfer(props) {
   return (
     <div>
       <Board
-        title=""
-        subTitle="Money Transfer"
+        title="Money Transfer"
+        subTitle={"< "+ props.details[0] +" >"}
         tabs={props.tabs}
         activeTab="Money Transfer"
         updateTab={(clickedTab) => props.updateTab(clickedTab)}

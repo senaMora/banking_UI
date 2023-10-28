@@ -23,8 +23,8 @@ function EmployeeCusLoan(props) {
   return (
     <div>
       <Board
-        title=""
-        subTitle="Loan Request"
+        title="Loan Request"
+        subTitle={"< "+ props.details[0] +" >"}
         tabs={props.tabs}
         activeTab="Loan Request"
         updateTab={(clickedTab) => props.updateTab(clickedTab)}

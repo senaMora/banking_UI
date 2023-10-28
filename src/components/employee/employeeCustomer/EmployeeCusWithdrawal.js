@@ -13,8 +13,8 @@ function EmployeeCusWithdrawal(props) {
   return (
     <div>
       <Board
-        title=""
-        subTitle="Cash Withdrawal"
+        title="Cash Withdrawal"
+        subTitle={"< "+ props.details[0] +" >"}
         tabs={props.tabs}
         activeTab="Cash Withdrawal"
         updateTab={(clickedTab) => props.updateTab(clickedTab)}
