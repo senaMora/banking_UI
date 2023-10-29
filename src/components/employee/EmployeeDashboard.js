@@ -7,6 +7,7 @@ function EmployeeDashboard(props) {
   let labels = [
     "First Name",
     "Last Name",
+    "Account No",
     "Branch ID",
     "NIC No",
     "Address",
@@ -18,8 +19,8 @@ function EmployeeDashboard(props) {
   return (
     <div>
       <Board
-        title="Dashboard"
-        subTitle=""
+        title="Employee Dashboard"
+        subTitle={props.details[0] + " < "+ props.details[2] +" >"}
         tabs={props.tabs}
         activeTab="Dashboard"
         updateTab={(clickedTab) => props.updateTab(clickedTab)}

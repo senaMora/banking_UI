@@ -20,11 +20,11 @@ let individualLines = [
     label: "Account Type :",
     type: "select",
     options: [
-      "Current",
-      "Saving-children",
-      "Saving-Teen",
-      "Saving-Adult(18+)",
-      "Saving-Senior(60+)",
+      "checking",
+      "saving-children",
+      "saving-teen",
+      "saving-adult",
+      "saving-senior",
       "Fixed-6months",
       "Fixed-1year",
       "Fixed-3year",
@@ -45,11 +45,11 @@ let organizationLines = [
     label: "Account Type :",
     type: "select",
     options: [
-      "Current",
-      "Saving-children",
-      "Saving-Teen",
-      "Saving-Adult(18+)",
-      "Saving-Senior(60+)",
+      "checking",
+      "saving-children",
+      "saving-teen",
+      "saving-adult",
+      "saving-senior",
       "Fixed-6months",
       "Fixed-1year",
       "Fixed-3year",
@@ -58,8 +58,40 @@ let organizationLines = [
 ];
 
 function EmployeeCreateAccount(props) {
+  function individualSubmitHandler(enteredDetails) {
+    console.log(enteredDetails);
+    const [accountType, subType] = enteredDetails[9].split("-");
+
+    const createAccountData = {
+      customerId: 1,
+      branchId: enteredDetails[2],
+      balance: enteredDetails[5],
+      accType: accountType,
+      savingAccType: subType,
+    };
+
+    fetch("http://localhost:8002/account/create", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(createAccountData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        // handle the response data here
+      })
+      .catch((error) => {
+        console.log(error);
+        // handle the error here
+      });
+    console.log("<end of fetch>");
+    props.onSumbitIndividualData(enteredDetails);
+  }
+
   let optionWindow = (
-    <Window title="Create Account" height="600px">
+    <Window title="Create Account" height="450px">
       <div>
         <div className={Styles.text}>Are you</div>
         <BlackButton text="Individual" clickHandler={individualClickHandler} />
@@ -81,9 +113,7 @@ function EmployeeCreateAccount(props) {
         button="Request"
         type="long"
         height="60px"
-        onSumbit={(enteredDetails) =>
-          props.onSumbitIndividualData(enteredDetails)
-        }
+        onSumbit={individualSubmitHandler}
       />
     </Window>
   );
@@ -115,8 +145,8 @@ function EmployeeCreateAccount(props) {
   return (
     <div>
       <Board
-        title="Create Account"
-        subTitle=""
+        title="Employee Create Account"
+        subTitle={props.details[0] + " < " + props.details[2] + " >"}
         tabs={props.tabs}
         activeTab="Create Account"
         updateTab={(clickedTab) => props.updateTab(clickedTab)}
@@ -128,5 +158,3 @@ function EmployeeCreateAccount(props) {
 }
 
 export default EmployeeCreateAccount;
-
-

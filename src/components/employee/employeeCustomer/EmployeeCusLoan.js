@@ -23,10 +23,11 @@ function EmployeeCusLoan(props) {
   return (
     <div>
       <Board
-        title=""
-        subTitle="Loan Request"
+        title="Loan Request"
+        subTitle={props.details[1] + " < "+ props.details[3] +" >"}
         tabs={props.tabs}
         activeTab="Loan Request"
+        color="#dbf4d8"
         updateTab={(clickedTab) => props.updateTab(clickedTab)}
       >
         <Window title="Loan Application" height="690px">
