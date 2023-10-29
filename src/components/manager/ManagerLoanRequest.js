@@ -62,7 +62,7 @@ const dummyData2 = [
   "05/20/1995",
 ];
 
-const bankID = [1, 2];
+const bankID = [1, 2,3,4,5,6,7,8,9,10];
 
 const loanDetails = [dummyData1, dummyData2];
 
