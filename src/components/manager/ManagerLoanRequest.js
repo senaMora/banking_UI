@@ -73,6 +73,10 @@ const getItemSize = (index) => {
 function ManagerLoanRequest(props) {
   const [selectedBody, setSelectedBody] = useState(null);
 
+  function approveHandler() {}
+
+  function rejectHandler() {}
+
   function loanDetailsHandler(index) {
     let newWindow = (
       <Window title="Loan Details" height="600px">
@@ -94,10 +98,10 @@ function ManagerLoanRequest(props) {
           </div>
         </div>
 
-        <button className="blackButton3" onClick={loanDetailsHandler}>
+        <button className="blackButton3" onClick={rejectHandler}>
           Reject
         </button>
-        <button className="blackButton4" onClick={loanDetailsHandler}>
+        <button className="blackButton4" onClick={approveHandler}>
           Approve
         </button>
       </Window>
@@ -122,7 +126,7 @@ function ManagerLoanRequest(props) {
       >
         <Window title="Loan Request List" height="600px">
           <List
-            height={70*bankID.length}
+            height={70 * bankID.length}
             itemCount={bankID.length}
             itemSize={getItemSize}
             width={650}
