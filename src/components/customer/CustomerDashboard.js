@@ -5,6 +5,7 @@ import DashboardList from "./parts/DashboardList";
 
 function CustomerDashboard(props) {
   let labels = [
+    "Balance",
     "First Name",
     "Last Name",
     "Account No",
@@ -19,7 +20,7 @@ function CustomerDashboard(props) {
   return (
     <div>
       <Board
-        title="Customerr Dashboard"
+        title="Customer Dashboard"
         subTitle={props.details[0] + " < "+ props.details[2] +" >"}
         tabs={props.tabs}
         activeTab="Dashboard"

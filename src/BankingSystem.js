@@ -19,10 +19,13 @@ import EmployeeSuccess from "./components/employee/EmployeeSuccess";
 
 import ManagerLoginPage from "./components/manager/ManagerLoginPage";
 import ManagerDashboard from "./components/manager/ManagerDashboard";
+import ManagerLateLoanReport from "./components/manager/ManagerLateLoanReport";
+import ManagerLoanList from "./components/manager/ManagerLoanList";
 
 import CustomerLoginPage from "./components/customer/CustomerLoginPage";
 import CustomerDashboard from "./components/customer/CustomerDashboard";
 import CustomerLoanRequest from "./components/customer/CustomerLoanRequest";
+import CustomerTransfer from "./components/customer/CustomerTransfer";
 
 let employeeCusTabs = [
   "Dashboard",
@@ -85,19 +88,11 @@ function BankingSystem() {
   const [error, setError] = useState();
   const [cusEmDetails, setCusEmDetails] = useState(null);
   const [cusDetails, setCusDetails] = useState(null);
+  const [role, setRole] = useState();
 
   const [view, setView] = useState(
     <LoginPage submitLogin={submitLoginHandler} />
   );
-
-  // const [view, setView] = useState(
-  //   <CustomerLoanRequest
-  //     details={details}
-  //     tabs={customerTabs}
-  //     updateTab={employeeTabClickHandler}
-  //     onSumbitLoanData={loanSubmitHandler}
-  //   />
-  // );
 
   // ================== CONSTANT COMPONENTS =========================
   const loginErrorComponent = (
@@ -111,18 +106,21 @@ function BankingSystem() {
   // ================== LOGIN DEVIDER =========================
   function submitLoginHandler(userType) {
     if (userType === "customer") {
+      setRole("customer");
       setView(
         <CustomerLoginPage
           onSubmitCredentials={submitCustomerCredentialsHandler}
         />
       );
     } else if (userType === "employee") {
+      setRole("employee");
       setView(
         <EmployeeLoginPage
           onSubmitCredentials={submitEmployeeCredentialsHandler}
         />
       );
     } else if (userType === "manager") {
+      setRole("manager");
       setView(
         <ManagerLoginPage
           onSubmitCredentials={submitManagerCredentialsHandler}
@@ -135,7 +133,7 @@ function BankingSystem() {
     if (cusDetails !== null) {
       setView(
         <CustomerDashboard
-          details={cusDetails}   // change to cusEmDetails.......................
+          details={cusDetails} // change to cusEmDetails.......................
           tabs={customerTabs}
           updateTab={customerTabClickHandler}
         />
@@ -150,7 +148,7 @@ function BankingSystem() {
       credentials.enteredEmail === "a" // &&
       // credentials.enteredPassword === ""
     ) {
-      setCusDetails(preCusDetails)
+      setCusDetails(preCusDetails);
     } else {
       setError(loginErrorComponent);
     }
@@ -208,10 +206,20 @@ function BankingSystem() {
     } else if (clickedTab === "Loan Request") {
       setView(
         <CustomerLoanRequest
-          details={cusEmDetails}
+          details={cusDetails}
           tabs={customerTabs}
           updateTab={customerTabClickHandler}
           onSumbitLoanData={loanSubmitHandler}
+        />
+      );
+    } else if (clickedTab === "Money Transfer") {
+      setView(
+        <CustomerTransfer
+          details={cusDetails}
+          updateTab={customerTabClickHandler}
+          tabs={customerTabs}
+          onSumbitTransferData={transferSubmitHandler}
+          onSumbitWrongAccount={selectAccountWrongHandler}
         />
       );
     } else if (clickedTab === "Log Out") {
@@ -284,16 +292,16 @@ function BankingSystem() {
       setView(
         <ManagerDashboard
           details={details}
-          tabs={employeeTabs}
-          updateTab={employeeTabClickHandler}
+          tabs={managerTabs}
+          updateTab={managerTabClickHandler}
         />
       );
     } else if (clickedTab === "Select Account") {
       setView(
         <EmployeeSelectAccount
           details={details}
-          updateTab={employeeTabClickHandler}
-          tabs={employeeTabs}
+          updateTab={managerTabClickHandler}
+          tabs={managerTabs}
           onSumbitSelectAccount={selectAccountSubmitHandler}
           onSumbitWrongAccount={selectAccountWrongHandler}
         />
@@ -302,8 +310,8 @@ function BankingSystem() {
       setView(
         <EmployeeCreateAccount
           details={details}
-          tabs={employeeTabs}
-          updateTab={employeeTabClickHandler}
+          tabs={managerTabs}
+          updateTab={managerTabClickHandler}
           onSumbitIndividualData={individualDataSumbitHandler}
           onSumbitOrganizationData={organizationDataSumbitoHandler}
         />
@@ -312,15 +320,33 @@ function BankingSystem() {
       setView(
         <EmployeeTransactionReport
           details={details}
-          tabs={employeeTabs}
+          tabs={managerTabs}
           dataRows={transactionReportData}
-          updateTab={employeeTabClickHandler}
+          updateTab={managerTabClickHandler}
+        />
+      );
+    } else if (clickedTab === "Late Loan Installment Report") {
+      setView(
+        <ManagerLateLoanReport
+          details={details}
+          tabs={managerTabs}
+          dataRows={transactionReportData}
+          updateTab={managerTabClickHandler}
+        />
+      );
+    } else if (clickedTab === "Loan Request List") {
+      setView(
+        <ManagerLoanList
+          details={details}
+          tabs={managerTabs}
+          dataRows={transactionReportData}
+          updateTab={managerTabClickHandler}
         />
       );
     } else if (clickedTab === "Log Out") {
       setView(
-        <EmployeeLoginPage
-          onSubmitCredentials={submitEmployeeCredentialsHandler}
+        <ManagerLoginPage
+          onSubmitCredentials={submitManagerCredentialsHandler}
         />
       );
     }
@@ -392,13 +418,23 @@ function BankingSystem() {
         />
       );
     } else if (clickedTab === "Log Out") {
-      setView(
-        <EmployeeDashboard
-          details={details}
-          tabs={employeeTabs}
-          updateTab={employeeTabClickHandler}
-        />
-      );
+      if (role === "employee") {
+        setView(
+          <EmployeeDashboard
+            details={details}
+            tabs={employeeTabs}
+            updateTab={employeeTabClickHandler}
+          />
+        );
+      } else {
+        setView(
+          <EmployeeDashboard
+            details={details}
+            tabs={managerTabs}
+            updateTab={managerTabClickHandler}
+          />
+        );
+      }
     }
   }
 
@@ -440,36 +476,67 @@ function BankingSystem() {
 
   // handle transfer sumbits (employee-customer)
   function transferSubmitHandler(transferData) {
-    cusEmDetails[0] =
-      parseFloat(cusEmDetails[0].split(" ")[1]) - parseFloat(transferData[1]);
-    cusEmDetails[0] = "Rs " + cusEmDetails[0];
-    setCusEmDetails(cusEmDetails);
+    if (role === "customer") {
+      cusDetails[0] =
+        parseFloat(cusDetails[0].split(" ")[1]) - parseFloat(transferData[1]);
+      cusDetails[0] = "Rs " + cusDetails[0];
+      setCusDetails(cusDetails);
 
-    setView(
-      <EmployeeSuccess
-        title=""
-        subTitle="Money Transfer"
-        tabs={employeeCusTabs}
-        windowTitle="Transfer"
-        message="Money Transfered Successfully"
-        updateTab={emplyeeCusTabClickHandler}
-      />
-    );
+      setView(
+        <EmployeeSuccess
+          title=""
+          subTitle="Money Transfer"
+          tabs={customerTabs}
+          windowTitle="Transfer"
+          message="Money Transfered Successfully"
+          updateTab={customerTabClickHandler}
+        />
+      );
+    } else {
+      cusEmDetails[0] =
+        parseFloat(cusEmDetails[0].split(" ")[1]) - parseFloat(transferData[1]);
+      cusEmDetails[0] = "Rs " + cusEmDetails[0];
+      setCusEmDetails(cusEmDetails);
+
+      setView(
+        <EmployeeSuccess
+          title=""
+          subTitle="Money Transfer"
+          tabs={employeeCusTabs}
+          windowTitle="Transfer"
+          message="Money Transfered Successfully"
+          updateTab={emplyeeCusTabClickHandler}
+        />
+      );
+    }
   }
 
   // handle loan application sumbits (employee-customer)
   function loanSubmitHandler(loanData) {
     // console.log(loanData);
-    setView(
-      <EmployeeSuccess
-        title=""
-        subTitle="Loan Request"
-        tabs={employeeCusTabs}
-        windowTitle="Loan Application"
-        message="Requested Successfully"
-        updateTab={emplyeeCusTabClickHandler}
-      />
-    );
+    if (role === "customer"){
+      setView(
+        <EmployeeSuccess
+          title=""
+          subTitle="Loan Request"
+          tabs={customerTabs}
+          windowTitle="Loan Application"
+          message="Requested Successfully"
+          updateTab={customerTabClickHandler}
+        />
+      );
+    } else {
+      setView(
+        <EmployeeSuccess
+          title=""
+          subTitle="Loan Request"
+          tabs={employeeCusTabs}
+          windowTitle="Loan Application"
+          message="Requested Successfully"
+          updateTab={emplyeeCusTabClickHandler}
+        />
+      );
+    }
   }
 
   const accountCreateSuccessComponent = (
