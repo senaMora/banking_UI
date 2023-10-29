@@ -1,8 +1,8 @@
 import React from "react";
 
 import Board from "./parts/Board";
-import Window from "../employee/parts/Window";
-import InputContainer from "../employee/parts/InputContainer";
+import Window from "./parts/Window";
+import InputContainer from "./parts/InputContainer";
 
 function CustomerLoanRequest(props) {
   let lines = [
@@ -18,18 +18,19 @@ function CustomerLoanRequest(props) {
     { label: "Email :", type: "text" },
     { label: "Telephone No :", type: "text" },
     { label: "Date of Birth :", type: "date" },
+    { label: "Fixed Deposit ID :", type: "text" },
   ];
 
   return (
     <div>
       <Board
-        title="Loan Request"
-        subTitle={props.details[0]}
+        title="Customer Loan Request"
+        subTitle={props.details[0] + " < "+ props.details[2] +" >"}
         tabs={props.tabs}
         activeTab="Loan Request"
         updateTab={(clickedTab) => props.updateTab(clickedTab)}
       >
-        <Window title="Loan Application" height="690px">
+        <Window title="Loan Application" height="700px">
           <InputContainer
             lines={lines}
             button="Request"

@@ -3,10 +3,11 @@ import React from "react";
 import Board from "./parts/Board";
 import DashboardList from "./parts/DashboardList";
 
-function EmployeeDashboard(props) {
+function CustomerDashboard(props) {
   let labels = [
     "First Name",
     "Last Name",
+    "Account No",
     "Branch ID",
     "NIC No",
     "Address",
@@ -18,8 +19,8 @@ function EmployeeDashboard(props) {
   return (
     <div>
       <Board
-        title="Customer Dashboard"
-        subTitle={props.details[0]}
+        title="Customerr Dashboard"
+        subTitle={props.details[0] + " < "+ props.details[2] +" >"}
         tabs={props.tabs}
         activeTab="Dashboard"
         updateTab={(clickedTab) => props.updateTab(clickedTab)}
@@ -30,4 +31,4 @@ function EmployeeDashboard(props) {
   );
 }
 
-export default EmployeeDashboard;
+export default CustomerDashboard;

@@ -9,7 +9,7 @@ function EmployeeTransactionReport(props) {
     <div>
       <Board
         title="Total Transaction Report"
-        subTitle=""
+        subTitle={props.details[0] + " < "+ props.details[2] +" >"}
         tabs={props.tabs}
         activeTab="Total Transaction Report"
         updateTab={(clickedTab) => props.updateTab(clickedTab)}

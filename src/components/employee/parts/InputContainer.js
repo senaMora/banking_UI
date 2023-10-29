@@ -22,7 +22,7 @@ function InputContainer(props) {
         <input
           className={styles.inputShort}
           type={line.type}
-          key={index}
+          // key={index}
           style={{
             height: props.height,
             backgroundColor: line.type === "number" ? "#737272" : null,

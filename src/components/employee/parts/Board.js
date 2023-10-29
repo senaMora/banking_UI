@@ -12,7 +12,7 @@ function Board(props) {
       <div className={styles.title}>{props.title}</div>
       <div className={styles.subTitle}>{props.subTitle}</div>
 
-      <div className={styles.pane} />
+      <div className={styles.pane} style={{backgroundColor : props.color}} />
       <div className={styles.paneBox}>
         {props.tabs.map((tab, index) => (
           <Tab 
