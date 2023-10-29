@@ -5,8 +5,10 @@ import DashboardList from "../parts/DashboardList";
 
 function EmployeeCusDashboard(props) {
   let labels = [
+    "Balance",
     "First Name",
     "Last Name",
+    "Account No",
     "Branch ID",
     "NIC No",
     "Address",
@@ -15,27 +17,18 @@ function EmployeeCusDashboard(props) {
     "Date of Birth",
   ];
 
-  let details = [
-    "John",
-    "Doe",
-    "001",
-    "123456789V",
-    "No 1, Galle Road, Colombo 03",
-    "123@gmail.com",
-    "0712345678",
-    "1990-01-01",
-  ];
 
   return (
     <div>
       <Board
-        title=""
-        subTitle="Dashboard"
+        title="Customer Dashboard"
+        subTitle={props.details[1] + " < "+ props.details[3] +" >"}
         tabs={props.tabs}
         activeTab="Dashboard"
+        color="#dbf4d8"
         updateTab={(clickedTab) => props.updateTab(clickedTab)}
       >
-        <DashboardList labels={labels} details={details} />
+        <DashboardList labels={labels} details={props.details} />
       </Board>
     </div>
   );

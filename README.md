@@ -31,9 +31,12 @@
     <li>Customer Money Transfer</li>
   </ol>
 </ol>
+<<<<<<< HEAD
 
 
 
 
 
 
+=======
+>>>>>>> Sena
