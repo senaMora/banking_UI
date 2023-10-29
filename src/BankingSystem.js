@@ -19,6 +19,7 @@ import ManagerDashboard from "./components/manager/ManagerDashboard";
 import CustomerDashboard from "./components/customer/CustomerDashboard";
 import CustomerLoanRequest from "./components/customer/CustomerLoanRequest";
 import ManagerLoanRequest from "./components/manager/ManagerLoanRequest";
+import ManagerLateLoanInstallmentReport from "./components/manager/ManagerLateLoanInstallmentReport";
 import CustomerTransfer from "./components/customer/CustomerTransfer";
 
 let employeeCusTabs = [
@@ -235,6 +236,13 @@ function BankingSystem() {
           updateTab={managerTabClickHandler}
         />
       );
+    } else if (clickedTab === "Late Loan Installment Report") {
+      setView(
+        <ManagerLateLoanInstallmentReport
+          tabs={managerTabs}
+          updateTab={managerTabClickHandler}
+        />
+      );
     } else if (clickedTab === "Log Out") {
       setView(<LoginPage onSubmitCredentials={submitCredentialsHandler} />);
     }
@@ -294,7 +302,6 @@ function BankingSystem() {
     } else if (clickedTab === "Log Out") {
       setView(
         <EmployeeDashboard
-          details={details}
           tabs={employeeTabs}
           updateTab={employeeTabClickHandler}
         />
