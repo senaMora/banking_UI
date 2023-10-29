@@ -9,7 +9,7 @@ function ErrorMessage(props) {
         {props.message}
 
         <button className={styles.errorButton} onClick={props.clickHandler}>
-          ok
+          OK
         </button>
       </div>
     </div>
