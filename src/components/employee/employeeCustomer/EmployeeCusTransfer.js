@@ -11,7 +11,6 @@ let lines = [
 ];
 
 function EmployeeCusTransfer(props) {
-
   function submitTransferHandler(enteredDetails) {
     const fromAcc = props.details[3];
     const toAcc = enteredDetails[0];
@@ -31,14 +30,18 @@ function EmployeeCusTransfer(props) {
       .then((data) => {
         console.log(data);
         // handle the response data here
+
+        if (data.querySuccesful === true) {
+          props.onSumbitTransferData(enteredDetails);
+        } else {
+          const errorMessage = "Transfer Failed! Please check again";
+          props.onSumbitWrongAccount(errorMessage);
+        }
       })
       .catch((error) => {
         console.log(error);
         // handle the error here
-        props.onSumbitWrongAccount(toAcc);
       });
-
-    props.onSumbitTransferData(enteredDetails);
   }
 
   return (

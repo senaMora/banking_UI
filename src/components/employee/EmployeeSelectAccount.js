@@ -41,7 +41,8 @@ function EmployeeSelectAccount(props) {
       .catch((error) => {
         console.log(error);
         // handle the error here
-        props.onSumbitWrongAccount(accountNo);
+        const errorMessage = accountNo + " is not a valid Account Number! Please check it again."
+        props.onSumbitWrongAccount(errorMessage);
       });
     console.log("<end of fetch in EmployeeSelectAccount>");
   }

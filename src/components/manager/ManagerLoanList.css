@@ -1,0 +1,83 @@
+.nameContainer2 {
+  position: absolute;
+  top: 0px;
+  left: 50px;
+  display: inline-block;
+  text-align: right;
+  width: 237px;
+  height: 434px;
+  font-family: "Arial";
+  color: black;
+  font-size: 22px;
+  font-weight: bold;
+  line-height: 0.5; /* Adjust the line-height to decrease space between lines of text */
+}
+
+.detailContainer2 {
+  position: absolute;
+  top: 0px;
+  left: 357px;
+  display: inline-block;
+  text-align: left;
+  width: 750px;
+  height: 434px;
+  font-family: "Arial";
+  color: black;
+  font-size: 22px;
+  line-height: 0.5; /* Adjust the line-height to decrease space between lines of text */
+}
+
+.buttonStyle {
+  width: 650px;
+  height: 70px;
+  text-align: left;
+  font-size: 20px;
+}
+
+
+.blackButton3, .blackButton4 {
+  position: relative;
+  border-radius: 10px;
+  width: 122px;
+  height: 50px;
+  background-color: black;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 24px;
+  color: white;
+}
+
+.blackButton3:hover {
+  background-color: rgba(0, 0, 0, 0.829);
+  transform: scale(1.1);
+}
+.blackButton4:hover {
+  background-color: rgba(0, 0, 0, 0.829);
+  transform: scale(1.1);
+}
+
+.text {
+  position: relative;
+  left: calc(50% - 166px);
+  font-size: 18px;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin-top: 15px;
+}
+
+.or {
+  left: calc(50% - 10px);
+}
+
+.blackButton3 {
+  top: 435px;
+  left: calc(50% - 480px);
+}
+
+.blackButton4 {
+  top: 380px;
+  left: calc(50% - 200px);
+}
+
