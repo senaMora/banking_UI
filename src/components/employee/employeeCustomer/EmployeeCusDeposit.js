@@ -10,18 +10,20 @@ let lines = [
 ];
 
 function EmployeeCusDeposit(props) {
-  
   function submitDepositHandler(enteredDetails) {
     const accNum = props.details[3];
     const amount = enteredDetails[0];
 
-    fetch(`http://localhost:8002/account/deposit/?accnum=${accNum}&amount=${amount}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      // body: JSON.stringify(passingData),
-    })
+    fetch(
+      `http://localhost:8002/account/deposit/?accnum=${accNum}&amount=${amount}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        // body: JSON.stringify(passingData),
+      }
+    )
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
@@ -30,7 +32,10 @@ function EmployeeCusDeposit(props) {
       .catch((error) => {
         console.log(error);
         // handle the error here
-        // props.onSumbitWrongAccount(accountNo);
+        const errorMessage =
+          accNum +
+          " is not a valid account number. Please enter correct Account No";
+        props.onSumbitWrongAccount(errorMessage);
       });
 
     props.onSumbitDepositData(enteredDetails);

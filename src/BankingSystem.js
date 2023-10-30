@@ -521,7 +521,7 @@ function BankingSystem() {
   // handle loan application sumbits (employee-customer)
   function loanSubmitHandler(loanData) {
     // console.log(loanData);
-    if (role === "customer"){
+    if (role === "customer") {
       setView(
         <EmployeeSuccess
           title=""
@@ -578,10 +578,8 @@ function BankingSystem() {
   }
   // ===================================
 
-  function selectAccountWrongHandler(accNo) {
-    viewError(
-      accNo + " is not a valid account number. Please enter correct Account No"
-    );
+  function selectAccountWrongHandler(errorMessage) {
+    viewError(errorMessage);
   }
 
   // /\/\/\/\/\/\/\/\/\/\/|| Return ||\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
