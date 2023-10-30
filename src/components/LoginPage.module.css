@@ -7,46 +7,17 @@
   width: 709px;
   height: 1116px;
 }
-.usernameInput {
+.loginHead {
   position: absolute;
-  top: 559px;
+  top: 500px;
   left: 1124px;
-  border-radius: 20px;
-  background-color: rgb(255, 255, 255);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) inset;
-  width: 500px;
-  height: 80px;
-
+  font-weight: bold;
   font-size: 30px;
-  text-align: center;
+  color: rgb(255, 255, 255);
+  z-index: 1;
+  
 }
-.passwordInput {
-  position: absolute;
-  top: 697px;
-  left: 1124px;
-  border-radius: 20px;
-  background-color: rgb(255, 255, 255);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) inset;
-  width: 500px;
-  height: 80px;
 
-  font-size: 30px;
-  text-align: center;
-}
-.username {
-  position: absolute;
-  top: 573px;
-  left: 1285px;
-  color: #92929d;
-  font-size: 40px;
-}
-.password {
-  position: absolute;
-  top: 709px;
-  left: 1288px;
-  color: #92929d;
-  font-size: 40px;
-}
 .logo {
   position: absolute;
   top: 241px;
@@ -70,29 +41,22 @@
   width: 777px;
   height: 333px;
 }
-.loginButton {
-  position: absolute;
-  top: 847px;
-  left: 1228px;
-  border-radius: 62px;
-  background-color: #000353;
-  width: 291px;
-  height: 80px;
-  cursor: pointer;
-
-  font-size: 35px;
-  color: rgb(255, 255, 255);
-}
-.loginButton:hover {
-  background: #000353cc;
-  transform: scale(1.1);
-}
+  
 .loginFrame {
   position: absolute;
   top: calc(50% - 558px);
   left: calc(50% - 864px);
   width: 1728px;
   height: 1117px;
-  overflow: hidden;
-  background-size: cover;
+  /* overflow: hidden;
+  background-size: cover; */
+}
+
+.buttonBox {
+  position: absolute;
+  top: 590px;
+  left: 190px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }

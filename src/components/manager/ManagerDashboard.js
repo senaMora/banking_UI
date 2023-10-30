@@ -7,6 +7,7 @@ function ManagerDashboard(props) {
   let labels = [
     "First Name",
     "Last Name",
+    "Account No",
     "Branch ID",
     "NIC No",
     "Address",
@@ -19,7 +20,7 @@ function ManagerDashboard(props) {
     <div>
       <Board
         title="Manager Dashboard"
-        subTitle={props.details[0]}
+        subTitle={props.details[0] + " < "+ props.details[2] +" >"}
         tabs={props.tabs}
         activeTab="Dashboard"
         updateTab={(clickedTab) => props.updateTab(clickedTab)}

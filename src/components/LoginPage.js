@@ -4,62 +4,36 @@ import logo from "../images/logo.png";
 // import { FunctionComponent } from "react";
 import styles from "./LoginPage.module.css";
 
+import BlackButton from "./employee/parts/BlackButton";
+
 function LoginPage(props) {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-
-  const [labelUsername, setLabelUsername] = useState("username");
-  const [labelPassword, setLabelPassword] = useState("password");
-
-  function usernameClickHandler(event) {
-    setUsername(event.target.value);
-    setLabelUsername("");
-    console.log(username);
+  // function for Handle submit
+  function customerClickHandler(event) {
+    // event.preventDefault();
+    props.submitLogin("customer");
   }
-  function passwordClickHandler(event) {
-    setPassword(event.target.value);
-    setLabelPassword("");
+  function employeeClickHandler(event) {
+    // event.preventDefault();
+    props.submitLogin("employee");
   }
-  // function for Handle submit 
-  function submitHandler(event) {
-    event.preventDefault();
-
-    const credentials = {
-      enteredUsername: username,
-      enteredPassword: password,
-    };
-    props.onSubmitCredentials(credentials);
-    setUsername("");
-    setPassword("");
-    setLabelUsername("username");
-    setLabelPassword("password");
-  };
+  function managernClickHandler(event) {
+    // event.preventDefault();
+    props.submitLogin("manager");
+  }
 
   return (
     <div className={styles.loginFrame}>
-      <div className={styles.pane} />
-      <form>
-        <input
-          type="text"
-          value={username}
-          className={styles.usernameInput}
-          onChange={usernameClickHandler}
-        />
-        <input
-          type="text"
-          value={password}
-          className={styles.passwordInput}
-          onChange={passwordClickHandler}
-        />
+      <div className={styles.loginHead}>Login Page</div>
 
-        <button className={styles.loginButton} onClick={submitHandler}>
-          Loginnn
-        </button>
-      </form>
+      <div className={styles.pane}>
+        <div className={styles.buttonBox}>
+          <BlackButton text="Customer" clickHandler={customerClickHandler} />
+          <BlackButton text="Employee" clickHandler={employeeClickHandler} />
+          <BlackButton text="Manager" clickHandler={managernClickHandler} />
+        </div>
+      </div>
 
       {/* input boxes */}
-      <div className={styles.username}>{labelUsername}</div>
-      <div className={styles.password}>{labelPassword}</div>
 
       <img className={styles.logo} alt="logo" src={logo} />
 

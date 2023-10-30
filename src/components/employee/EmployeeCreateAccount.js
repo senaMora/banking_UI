@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Styles from "./parts/BlackButton.module.css";
 
 import Board from "./parts/Board";
@@ -20,11 +20,11 @@ let individualLines = [
     label: "Account Type :",
     type: "select",
     options: [
-      "Current",
-      "Saving-children",
-      "Saving-Teen",
-      "Saving-Adult(18+)",
-      "Saving-Senior(60+)",
+      "checking",
+      "saving-children",
+      "saving-teen",
+      "saving-adult",
+      "saving-senior",
       "Fixed-6months",
       "Fixed-1year",
       "Fixed-3year",
@@ -45,11 +45,11 @@ let organizationLines = [
     label: "Account Type :",
     type: "select",
     options: [
-      "Current",
-      "Saving-children",
-      "Saving-Teen",
-      "Saving-Adult(18+)",
-      "Saving-Senior(60+)",
+      "checking",
+      "saving-children",
+      "saving-teen",
+      "saving-adult",
+      "saving-senior",
       "Fixed-6months",
       "Fixed-1year",
       "Fixed-3year",
@@ -59,11 +59,15 @@ let organizationLines = [
 
 function EmployeeCreateAccount(props) {
   function individualSubmitHandler(enteredDetails) {
-    const dummyData = {
+    console.log(enteredDetails);
+    const [accountType, subType] = enteredDetails[9].split("-");
+
+    const createAccountData = {
       customerId: 1,
-      branchId: 1,
-      balance: 5000.0,
-      accType: "checking",
+      branchId: enteredDetails[2],
+      balance: enteredDetails[5],
+      accType: accountType,
+      savingAccType: subType,
     };
 
     fetch("http://localhost:8002/account/create", {
@@ -71,7 +75,7 @@ function EmployeeCreateAccount(props) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(dummyData),
+      body: JSON.stringify(createAccountData),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -87,7 +91,7 @@ function EmployeeCreateAccount(props) {
   }
 
   let optionWindow = (
-    <Window title="Create Account" height="600px">
+    <Window title="Create Account" height="450px">
       <div>
         <div className={Styles.text}>Are you</div>
         <BlackButton text="Individual" clickHandler={individualClickHandler} />
@@ -141,8 +145,8 @@ function EmployeeCreateAccount(props) {
   return (
     <div>
       <Board
-        title="Create Account"
-        subTitle=""
+        title={props.tabs.length === 5 ? "Employee Create Account" : "Manager Create Account"}
+        subTitle={props.details[0] + " < " + props.details[2] + " >"}
         tabs={props.tabs}
         activeTab="Create Account"
         updateTab={(clickedTab) => props.updateTab(clickedTab)}

@@ -46,7 +46,8 @@
 .pane {
   position: absolute;
   border-radius: 64px 0px 0px 64px;
-  background-color: rgb(255, 255, 255);
+  background-color: #f5f8f6;
+  /* color: #dbf4d8; */
   width: 480px;
   height: 987px;
 }
@@ -65,3 +66,5 @@
   color: rgb(0, 0, 0);
   /* background-color: rgba(20, 23, 54, 0.66); */
 }
+
+ 

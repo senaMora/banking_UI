@@ -4,7 +4,7 @@ import Board from "./parts/Board";
 import Window from "./parts/Window";
 import InputContainer from "./parts/InputContainer";
 
-function EmployeeDashboard(props) {
+function EmployeeSelectAccount(props) {
   let lines = [
     { label: "Account No", type: "text" },
     // { label: "User ID", type: "text" },
@@ -12,36 +12,45 @@ function EmployeeDashboard(props) {
   ];
 
   function onSumbitAccountNo(accountNo) {
-    const passingData = {
-      accountNo,
-    };
 
-    fetch("http://localhost:8002/account/create", {
-      method: "POST",
+    fetch(`http://localhost:8002/account/get/${accountNo}`, {
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(passingData),
+      // body: JSON.stringify(passingData),
     })
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
         // handle the response data here
+        const customerDetails = [
+          "SCR " + data.responseObject.balance,
+          "test first name",
+          "test last name",
+          data.responseObject.accountNumber,
+          data.responseObject.branch_id,
+          "test nic no",
+          data.responseObject.address,
+          data.responseObject.email,
+          data.responseObject.phoneNumber,
+          "test date of birth",
+        ];
+        props.onSumbitSelectAccount(customerDetails);
       })
       .catch((error) => {
         console.log(error);
         // handle the error here
+        props.onSumbitWrongAccount(accountNo);
       });
     console.log("<end of fetch in EmployeeSelectAccount>");
-
-    props.onSumbitSelectAccount(/*accountNo*/);
   }
 
   return (
     <div>
       <Board
-        title="Select Account"
-        subTitle=""
+        title={props.tabs.length === 5 ? "Employee Select Account" : "Manager Select Account"}
+        subTitle={props.details[0] + " < " + props.details[2] + " >"}
         tabs={props.tabs}
         activeTab="Select Account"
         updateTab={(clickedTab) => props.updateTab(clickedTab)}
@@ -59,4 +68,4 @@ function EmployeeDashboard(props) {
   );
 }
 
-export default EmployeeDashboard;
+export default EmployeeSelectAccount;
