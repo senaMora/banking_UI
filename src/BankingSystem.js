@@ -445,7 +445,7 @@ function BankingSystem() {
   function depositSubmitHandler(depositData) {
     cusEmDetails[0] =
       parseFloat(cusEmDetails[0].split(" ")[1]) + parseFloat(depositData[0]);
-    cusEmDetails[0] = "Rs " + cusEmDetails[0];
+    cusEmDetails[0] = "SCR " + cusEmDetails[0];
     setCusEmDetails(cusEmDetails);
 
     setView(
@@ -495,7 +495,7 @@ function BankingSystem() {
     } else {
       cusEmDetails[0] =
         parseFloat(cusEmDetails[0].split(" ")[1]) - parseFloat(transferData[1]);
-      cusEmDetails[0] = "Rs " + cusEmDetails[0];
+      cusEmDetails[0] = "SCR " + cusEmDetails[0];
       setCusEmDetails(cusEmDetails);
 
       setView(

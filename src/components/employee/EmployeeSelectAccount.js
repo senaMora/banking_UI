@@ -25,7 +25,7 @@ function EmployeeSelectAccount(props) {
         console.log(data);
         // handle the response data here
         const customerDetails = [
-          "Rs " + data.responseObject.balance,
+          "SCR " + data.responseObject.balance,
           "test first name",
           "test last name",
           data.responseObject.accountNumber,
