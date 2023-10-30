@@ -2,6 +2,7 @@ import React from "react";
 
 import Styles2 from "./EmployeeTransactionReport.css";
 
+import Table from "./parts/table.css";
 
 import Board from "./parts/Board";
 import Window from "./parts/Window";

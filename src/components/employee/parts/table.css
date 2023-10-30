@@ -1,0 +1,21 @@
+/* table.css */
+.custom-table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 93.5%; /* Limit the table's width to 100% of the parent element's width */
+    margin: 20px;
+}
+
+.custom-table td, .custom-table th {
+    border: 1px solid black;
+    padding: 8px;
+}
+
+.custom-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #8B8B8B;
+    color: black;
+}
