@@ -20,7 +20,7 @@ function CustomerLoginPage(props) {
     setPassword(event.target.value);
     setLabelPassword("");
   }
-  // function for Handle submit 
+  // function for Handle submit
   function submitHandler(event) {
     event.preventDefault();
 
@@ -28,12 +28,36 @@ function CustomerLoginPage(props) {
       enteredEmail: email,
       enteredPassword: password,
     };
-    props.onSubmitCredentials(credentials);
+
     setEmail("");
     setPassword("");
     setLabelEmail("email");
     setLabelPassword("password");
-  };
+
+    // const fromAcc = props.details[3];
+    // const toAcc = enteredDetails[0];
+    // const amount = enteredDetails[1];
+
+    fetch(`http://localhost:8002/customer/login/${email}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      // body: JSON.stringify(passingData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        // handle the response data here
+      })
+      .catch((error) => {
+        console.log(error);
+        // handle the error here
+        // props.onSumbitWrongAccount(toAcc);
+      });
+
+    props.onSubmitCredentials(credentials);
+  }
 
   return (
     <div className={styles.loginFrame}>

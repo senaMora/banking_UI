@@ -25,7 +25,7 @@ function EmployeeSelectAccount(props) {
         console.log(data);
         // handle the response data here
         const customerDetails = [
-          "Rs " + data.responseObject.balance,
+          "SCR " + data.responseObject.balance,
           "test first name",
           "test last name",
           data.responseObject.accountNumber,
@@ -49,7 +49,7 @@ function EmployeeSelectAccount(props) {
   return (
     <div>
       <Board
-        title="Employee Select Account"
+        title={props.tabs.length === 5 ? "Employee Select Account" : "Manager Select Account"}
         subTitle={props.details[0] + " < " + props.details[2] + " >"}
         tabs={props.tabs}
         activeTab="Select Account"

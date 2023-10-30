@@ -24,7 +24,7 @@ function CustomerLoanRequest(props) {
   return (
     <div>
       <Board
-        title="Customer Loan Request"
+        title="Online Loan Request"
         subTitle={props.details[0] + " < "+ props.details[2] +" >"}
         tabs={props.tabs}
         activeTab="Loan Request"
