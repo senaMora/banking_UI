@@ -26,8 +26,9 @@ function EmployeeSelectAccount(props) {
         // handle the response data here
         const customerDetails = [
           "SCR " + data.responseObject.balance,
-          "test first name",
-          "test last name",
+          data.responseObject.firstName,
+          data.responseObject.lastName,
+          "test organization name" ,
           data.responseObject.accountNumber,
           data.responseObject.branch_id,
           "test nic no",
@@ -35,6 +36,7 @@ function EmployeeSelectAccount(props) {
           data.responseObject.email,
           data.responseObject.phoneNumber,
           "test date of birth",
+          data.responseObject.customerType,
         ];
         props.onSumbitSelectAccount(customerDetails);
       })
