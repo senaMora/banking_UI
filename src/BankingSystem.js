@@ -382,6 +382,7 @@ function BankingSystem() {
       setView(
         <EmployeeCusDashboard
           details={cusEmDetails}
+
           updateTab={emplyeeCusTabClickHandler}
           tabs={employeeCusTabs}
         />
