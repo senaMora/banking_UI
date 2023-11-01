@@ -12,8 +12,8 @@ let lines = [
 function EmployeeCusDeposit(props) {
   
   function submitDepositHandler(enteredDetails) {
-    const accNum = props.details[3];
-    const amount = enteredDetails[0];
+    const accNum = props.details[4];
+    const amount = enteredDetails[1];
 
     fetch(`http://localhost:8002/account/deposit/?accnum=${accNum}&amount=${amount}`, {
       method: "POST",
