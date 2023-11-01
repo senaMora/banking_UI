@@ -7,6 +7,7 @@ import EmployeeDashboard from "./components/employee/EmployeeDashboard.js";
 import EmployeeSelectAccount from "./components/employee/EmployeeSelectAccount.js";
 import EmployeeCreateAccount from "./components/employee/EmployeeCreateAccount";
 import EmployeeTransactionReport from "./components/employee/EmployeeTransactionReport";
+import EmployeeAddCustomer from "./components/employee/EmployeeAddCustomer";
 
 import EmployeeCusDashboard from "./components/employee/employeeCustomer/EmployeeCusDashboard";
 import EmployeeCusDeposit from "./components/employee/employeeCustomer/EmployeeCusDeposit";
@@ -67,9 +68,18 @@ let transactionReportData = [
 
 function BankingSystem() {
   //control state of =====VIEW====
+
   const [view, setView] = useState(
-    <LoginPage onSubmitCredentials={submitCredentialsHandler} />
+    <EmployeeAddCustomer
+      updateTab={managerTabClickHandler}
+      tabs={managerTabs}
+      onSumbitSelectAccount={selectAccountSubmitHandler}
+    />
   );
+
+  // const [view, setView] = useState(
+  //   <LoginPage onSubmitCredentials={submitCredentialsHandler} />
+  // );
   // const [view, setView] = useState(
   //   <CustomerLoanRequest
   //     details={details}
