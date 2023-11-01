@@ -18,6 +18,7 @@ function EmployeeCusDashboard(props) {
       "Email",
       "Telephone No",
       "Date of Birth",
+      "Customer Type",
     ];
   } else if (props.details[props.details.length - 1] === 'organization') {
     labels = [
@@ -29,6 +30,7 @@ function EmployeeCusDashboard(props) {
       "Address",
       "Email",
       "Telephone No",
+      "Customer Type",
     ];
   }
 

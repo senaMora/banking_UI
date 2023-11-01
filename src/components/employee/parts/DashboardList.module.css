@@ -1,10 +1,10 @@
 .nameContainer {
   position: absolute;
-  top: 498px;
+  top: 450px; /*changed*/
   left: 657px;
   display: inline-block;
   text-align: right;
-  width: 237px;
+  width: 300px; /*changed*/
   height: 434px;
 
   font-family: "Bai Jamjuree";
@@ -14,8 +14,8 @@
 }
 .detailContainer {
   position: absolute;
-  top: 498px;
-  left: 914px;
+  top: 450px; /*changed*/
+  left: 970px;   /*changed*/
   display: inline-block;
   text-align: left;
   width: 750px;
