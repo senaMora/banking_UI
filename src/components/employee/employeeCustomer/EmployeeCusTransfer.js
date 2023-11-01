@@ -45,7 +45,7 @@ function EmployeeCusTransfer(props) {
     <div>
       <Board
         title="Money Transfer"
-        subTitle={props.details[1] + " < " + props.details[3] + " >"}
+        subTitle={props.details[2] + " < " + props.details[4] + " >"}
         tabs={props.tabs}
         activeTab="Money Transfer"
         color="#dbf4d8"

@@ -12,7 +12,6 @@ function EmployeeSelectAccount(props) {
   ];
 
   function onSumbitAccountNo(accountNo) {
-
     fetch(`http://localhost:8002/account/get/${accountNo}`, {
       method: "GET",
       headers: {
@@ -24,18 +23,37 @@ function EmployeeSelectAccount(props) {
       .then((data) => {
         console.log(data);
         // handle the response data here
-        const customerDetails = [
-          "SCR " + data.responseObject.balance,
-          "test first name",
-          "test last name",
-          data.responseObject.accountNumber,
-          data.responseObject.branch_id,
-          "test nic no",
-          data.responseObject.address,
-          data.responseObject.email,
-          data.responseObject.phoneNumber,
-          "test date of birth",
-        ];
+        let customerDetails = [];
+        if (data.responseObject.customerType === "individual") {
+          customerDetails = [
+            ". ",
+            "SCR " + data.responseObject.balance,
+            data.responseObject.firstName,
+            data.responseObject.lastName,
+            data.responseObject.accountNumber,
+            data.responseObject.accountType,
+            data.responseObject.branch_id,
+            data.responseObject.nic,
+            data.responseObject.address,
+            data.responseObject.email,
+            data.responseObject.phoneNumber,
+            data.responseObject.dob,
+          ];
+        } else {
+          customerDetails = [
+            ". ",
+            "SCR " + data.responseObject.balance,
+            data.responseObject.orgName,
+            data.responseObject.orgRegNumber,            
+            data.responseObject.accountNumber,
+            data.responseObject.accountType,
+            data.responseObject.branch_id,
+            data.responseObject.address,
+            data.responseObject.email,
+            data.responseObject.phoneNumber,
+          ];
+        }
+
         props.onSumbitSelectAccount(customerDetails);
       })
       .catch((error) => {
@@ -49,7 +67,11 @@ function EmployeeSelectAccount(props) {
   return (
     <div>
       <Board
-        title={props.tabs.length === 5 ? "Employee Select Account" : "Manager Select Account"}
+        title={
+          props.tabs.length === 5
+            ? "Employee Select Account"
+            : "Manager Select Account"
+        }
         subTitle={props.details[0] + " < " + props.details[2] + " >"}
         tabs={props.tabs}
         activeTab="Select Account"

@@ -5,15 +5,15 @@ import DashboardList from "./parts/DashboardList";
 
 function EmployeeDashboard(props) {
   let labels = [
-    "First Name",
-    "Last Name",
-    "Account No",
-    "Branch ID",
-    "NIC No",
-    "Address",
-    "Email",
-    "Telephone No",
-    "Date of Birth",
+    "First Name :",
+    "Last Name :",
+    "Account No :",
+    "Branch ID :",
+    "NIC No :",
+    "Address :",
+    "Email :",
+    "Telephone No :",
+    "Date of Birth :",
   ];
 
   return (

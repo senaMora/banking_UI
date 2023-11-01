@@ -24,7 +24,7 @@ function EmployeeCusLoan(props) {
     <div>
       <Board
         title="Loan Request"
-        subTitle={props.details[1] + " < "+ props.details[3] +" >"}
+        subTitle={props.details[2] + " < "+ props.details[4] +" >"}
         tabs={props.tabs}
         activeTab="Loan Request"
         color="#dbf4d8"

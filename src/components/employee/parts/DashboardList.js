@@ -8,7 +8,7 @@ function DashboardList(props) {
       <div className={styles.nameContainer}>
         {props.labels.map((label, index) => (
           <p className={styles.label} key={index}>
-            {label} :
+            {label}
           </p>
         ))}
       </div>

@@ -14,7 +14,7 @@ function EmployeeCusWithdrawal(props) {
     <div>
       <Board
         title="Cash Withdrawal"
-        subTitle={props.details[1] + " < "+ props.details[3] +" >"}
+        subTitle={props.details[2] + " < "+ props.details[4] +" >"}
         tabs={props.tabs}
         activeTab="Cash Withdrawal"
         color="#dbf4d8"

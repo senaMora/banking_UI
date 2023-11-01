@@ -40,7 +40,7 @@ function EmployeeCusDeposit(props) {
     <div>
       <Board
         title="Cash Deposit"
-        subTitle={props.details[1] + " < " + props.details[3] + " >"}
+        subTitle={props.details[2] + " < " + props.details[4] + " >"}
         tabs={props.tabs}
         activeTab="Cash Deposit"
         color="#dbf4d8"

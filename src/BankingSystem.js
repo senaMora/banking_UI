@@ -443,9 +443,9 @@ function BankingSystem() {
   // ================== EMPLOYEE SUCCESS HANDLERS =========================
   // handle deposit sumbits (employee-customer)
   function depositSubmitHandler(depositData) {
-    cusEmDetails[0] =
-      parseFloat(cusEmDetails[0].split(" ")[1]) + parseFloat(depositData[0]);
-    cusEmDetails[0] = "SCR " + cusEmDetails[0];
+    cusEmDetails[1] =
+      parseFloat(cusEmDetails[1].split(" ")[1]) + parseFloat(depositData[0]);
+    cusEmDetails[1] = "SCR " + cusEmDetails[1];
     setCusEmDetails(cusEmDetails);
 
     setView(
@@ -477,9 +477,9 @@ function BankingSystem() {
   // handle transfer sumbits (employee-customer)
   function transferSubmitHandler(transferData) {
     if (role === "customer") {
-      cusDetails[0] =
-        parseFloat(cusDetails[0].split(" ")[1]) - parseFloat(transferData[1]);
-      cusDetails[0] = "Rs " + cusDetails[0];
+      cusDetails[1] =
+        parseFloat(cusDetails[1].split(" ")[1]) - parseFloat(transferData[1]);
+      cusDetails[1] = "Rs " + cusDetails[1];
       setCusDetails(cusDetails);
 
       setView(
