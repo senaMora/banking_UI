@@ -42,15 +42,22 @@ function CustomerLoanRequest(props) {
       .then((data) => {
         console.log(data);
         // handle the response data here
+        if (data.responseMessage === "Loan request created successfully and approved") {
+          props.onSumbitLoanData(enteredDetails);
+        } else {
+          const message = data.responseMessage;
+          props.onSumbitWrongRequest(message);
+        }
+
+
+        
       })
       .catch((error) => {
         console.log(error);
         // handle the error here
-        // props.onSumbitWrongAccount(accountNo);
+        
       });
-
- 
-    props.onSumbitLoanData(enteredDetails);
+    
   }
 
 

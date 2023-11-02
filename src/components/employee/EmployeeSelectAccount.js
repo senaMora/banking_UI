@@ -68,7 +68,7 @@ function EmployeeSelectAccount(props) {
     <div>
       <Board
         title={
-          props.tabs.length === 5
+          props.tabs.length === 6
             ? "Employee Select Account"
             : "Manager Select Account"
         }

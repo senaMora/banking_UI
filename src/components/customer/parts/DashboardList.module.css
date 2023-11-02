@@ -1,6 +1,6 @@
 .nameContainer {
   position: absolute;
-  top: 498px;
+  top: 450px;
   left: 657px;
   display: inline-block;
   text-align: right;
@@ -14,7 +14,7 @@
 }
 .detailContainer {
   position: absolute;
-  top: 498px;
+  top: 450px;
   left: 914px;
   display: inline-block;
   text-align: left;

@@ -9,6 +9,7 @@ function CustomerDashboard(props) {
     "First Name",
     "Last Name",
     "Account No",
+    "Account Type",
     "Branch ID",
     "NIC No",
     "Address",
@@ -20,8 +21,8 @@ function CustomerDashboard(props) {
   return (
     <div>
       <Board
-        title="Customer Dashboard"
-        subTitle={props.details[0] + " < "+ props.details[2] +" >"}
+        title="Welcome!"
+        subTitle={props.details[1] + " < "+ props.details[3] +" >"}
         tabs={props.tabs}
         activeTab="Dashboard"
         updateTab={(clickedTab) => props.updateTab(clickedTab)}

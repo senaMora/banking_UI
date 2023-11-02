@@ -7,6 +7,7 @@ import EmployeeLoginPage from "./components/employee/EmployeeLoginPage";
 import EmployeeDashboard from "./components/employee/EmployeeDashboard.js";
 import EmployeeSelectAccount from "./components/employee/EmployeeSelectAccount.js";
 import EmployeeCreateAccount from "./components/employee/EmployeeCreateAccount";
+import EmployeeAddCustomer from "./components/employee/EmployeeAddCustomer";
 import EmployeeTransactionReport from "./components/employee/EmployeeTransactionReport";
 
 import EmployeeCusDashboard from "./components/employee/employeeCustomer/EmployeeCusDashboard";
@@ -39,6 +40,7 @@ let employeeTabs = [
   "Dashboard",
   "Select Account",
   "Create Account",
+  "Add Customer",
   "Total Transaction Report",
   "Log Out",
 ];
@@ -46,6 +48,7 @@ let managerTabs = [
   "Dashboard",
   "Select Account",
   "Create Account",
+  "Add Customer",
   "Total Transaction Report",
   "Late Loan Installment Report",
   "Loan Request List",
@@ -56,7 +59,6 @@ let customerTabs = ["Dashboard", "Loan Request", "Money Transfer", "Log Out"];
 let details = [
   "Nimal",
   "Perera",
-  "2005364",
   "123",
   "123456789V",
   "No 1, Galle Road, Colombo 03",
@@ -110,6 +112,7 @@ function BankingSystem() {
       setView(
         <CustomerLoginPage
           onSubmitCredentials={submitCustomerCredentialsHandler}
+          errorTrigger={viewError}
         />
       );
     } else if (userType === "employee") {
@@ -117,6 +120,7 @@ function BankingSystem() {
       setView(
         <EmployeeLoginPage
           onSubmitCredentials={submitEmployeeCredentialsHandler}
+          errorTrigger={viewError}
         />
       );
     } else if (userType === "manager") {
@@ -124,6 +128,7 @@ function BankingSystem() {
       setView(
         <ManagerLoginPage
           onSubmitCredentials={submitManagerCredentialsHandler}
+          errorTrigger={viewError}
         />
       );
     }
@@ -142,22 +147,16 @@ function BankingSystem() {
   }, [cusDetails]);
 
   // ================== INITIAL CREDENTIAL HANDLERS =========================
-  function submitCustomerCredentialsHandler(credentials) {
-    console.log(credentials);
-    if (
-      credentials.enteredEmail === "a" // &&
-      // credentials.enteredPassword === ""
-    ) {
-      setCusDetails(preCusDetails);
-    } else {
-      setError(loginErrorComponent);
-    }
+  function submitCustomerCredentialsHandler(customerDetails) {
+    console.log(customerDetails);
+
+    setCusDetails(customerDetails);
   }
 
   function submitEmployeeCredentialsHandler(credentials) {
     console.log(credentials);
     if (
-      credentials.enteredEmail === "b" // &&
+      credentials.enteredNic === "b" // &&
       // credentials.enteredPassword === ""
     ) {
       setView(
@@ -210,6 +209,7 @@ function BankingSystem() {
           tabs={customerTabs}
           updateTab={customerTabClickHandler}
           onSumbitLoanData={loanSubmitHandler}
+          onSumbitWrongRequest={viewError}
         />
       );
     } else if (clickedTab === "Money Transfer") {
@@ -227,6 +227,7 @@ function BankingSystem() {
       setView(
         <CustomerLoginPage
           onSubmitCredentials={submitCustomerCredentialsHandler}
+          errorTrigger={viewError}
         />
       );
     }
@@ -265,15 +266,54 @@ function BankingSystem() {
           onSumbitOrganizationData={organizationDataSumbitoHandler}
         />
       );
-    } else if (clickedTab === "Total Transaction Report") {
+    } else if (clickedTab === "Add Customer") {
       setView(
-        <EmployeeTransactionReport
+        <EmployeeAddCustomer
           details={details}
           tabs={employeeTabs}
-          dataRows={transactionReportData}
           updateTab={employeeTabClickHandler}
+          onSumbitIndividualData={individualDataSumbitHandler}
+          onSumbitOrganizationData={organizationDataSumbitoHandler}
         />
       );
+    } else if (clickedTab === "Total Transaction Report") {
+      const branchid = 1;
+      const pagenumber = 1;
+
+      fetch(
+        `http://localhost:8002/account/getAllTransactions/?branchId=${branchid}&pageNumber=${pagenumber}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          // body: JSON.stringify(passingData),
+        }
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          // handle the response data here
+          const transactionReportData = data.responseObject
+            .filter((obj) => obj !== null)
+            .map((obj) => Object.values(obj));
+
+          setView(
+            <EmployeeTransactionReport
+              details={details}
+              tabs={employeeTabs}
+              dataRows={transactionReportData}
+              updateTab={employeeTabClickHandler}
+            />
+          );
+
+          // props.onSumbitSelectAccount(customerDetails);
+        })
+        .catch((error) => {
+          console.log(error);
+          // handle the error here
+          // props.onSumbitWrongAccount(accountNo);
+        });
     } else if (clickedTab === "Log Out") {
       setView(
         <EmployeeLoginPage
@@ -309,6 +349,16 @@ function BankingSystem() {
     } else if (clickedTab === "Create Account") {
       setView(
         <EmployeeCreateAccount
+          details={details}
+          tabs={managerTabs}
+          updateTab={managerTabClickHandler}
+          onSumbitIndividualData={individualDataSumbitHandler}
+          onSumbitOrganizationData={organizationDataSumbitoHandler}
+        />
+      );
+    } else if (clickedTab === "Add Customer") {
+      setView(
+        <EmployeeAddCustomer
           details={details}
           tabs={managerTabs}
           updateTab={managerTabClickHandler}
@@ -514,7 +564,7 @@ function BankingSystem() {
   // handle loan application sumbits (employee-customer)
   function loanSubmitHandler(loanData) {
     // console.log(loanData);
-    if (role === "customer"){
+    if (role === "customer") {
       setView(
         <EmployeeSuccess
           title=""

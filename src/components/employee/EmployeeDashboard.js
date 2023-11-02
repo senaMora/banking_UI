@@ -7,7 +7,6 @@ function EmployeeDashboard(props) {
   let labels = [
     "First Name :",
     "Last Name :",
-    "Account No :",
     "Branch ID :",
     "NIC No :",
     "Address :",

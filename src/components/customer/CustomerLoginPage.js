@@ -20,7 +20,46 @@ function CustomerLoginPage(props) {
     setPassword(event.target.value);
     setLabelPassword("");
   }
-  // function for Handle submit
+
+  // function for fetch detail & display dashboard
+  function identifyCustomer(credentials) {
+    // should handle
+    fetch(`http://localhost:8002/customer/getcustomer/${credentials.enteredEmail}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      // body: JSON.stringify(passingData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+
+        const customerDetails = [
+          "SCR " + data.responseObject.balance,
+          data.responseObject.firstName,
+          data.responseObject.lastName,
+          data.responseObject.accountNumber,
+          data.responseObject.accountType,
+          data.responseObject.branch_id,
+          data.responseObject.nic,
+          data.responseObject.address,
+          data.responseObject.email,
+          data.responseObject.phoneNumber,
+          data.responseObject.dob,
+        ];
+
+        props.onSubmitCredentials(customerDetails);
+        // handle the response data here
+      })
+      .catch((error) => {
+        console.log(error);
+        // handle the error here
+        // props.onSumbitWrongAccount(toAcc);
+      });
+  }
+
+  // function for === HANDLE SUBMIT ===
   function submitHandler(event) {
     event.preventDefault();
 
@@ -34,10 +73,6 @@ function CustomerLoginPage(props) {
     setLabelEmail("email");
     setLabelPassword("password");
 
-    // const fromAcc = props.details[3];
-    // const toAcc = enteredDetails[0];
-    // const amount = enteredDetails[1];
-
     fetch(`http://localhost:8002/customer/login/${email}`, {
       method: "GET",
       headers: {
@@ -48,6 +83,17 @@ function CustomerLoginPage(props) {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
+
+        if (
+          data.responseMessage === "credential found" &&
+          data.responseObject === password
+        ) {
+          identifyCustomer(credentials);
+        } else {
+          const message =
+            "Entered Email Address and Password not valid! Please Enter Correct Username and Password.";
+          props.errorTrigger(message);
+        }
         // handle the response data here
       })
       .catch((error) => {
@@ -55,8 +101,6 @@ function CustomerLoginPage(props) {
         // handle the error here
         // props.onSumbitWrongAccount(toAcc);
       });
-
-    props.onSubmitCredentials(credentials);
   }
 
   return (

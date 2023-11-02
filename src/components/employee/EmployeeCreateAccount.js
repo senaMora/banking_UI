@@ -145,7 +145,7 @@ function EmployeeCreateAccount(props) {
   return (
     <div>
       <Board
-        title={props.tabs.length === 5 ? "Employee Create Account" : "Manager Create Account"}
+        title={props.tabs.length === 6 ? "Employee Create Account" : "Manager Create Account"}
         subTitle={props.details[0] + " < " + props.details[2] + " >"}
         tabs={props.tabs}
         activeTab="Create Account"

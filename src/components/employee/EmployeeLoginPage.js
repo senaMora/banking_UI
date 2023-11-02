@@ -5,35 +5,109 @@ import logo from "../../images/logo.png";
 import styles from "./EmployeeLoginPage.module.css";
 
 function EmployeeLoginPage(props) {
-  const [email, setEmail] = useState("");
+  const [nic, setNic] = useState("");
   const [password, setPassword] = useState("");
 
-  const [labelEmail, setLabelEmail] = useState("email");
+  const [labelNic, setLabelNic] = useState("nic");
   const [labelPassword, setLabelPassword] = useState("password");
 
   function emailClickHandler(event) {
-    setEmail(event.target.value);
-    setLabelEmail("");
-    console.log(email);
+    setNic(event.target.value);
+    setLabelNic("");
+    console.log(nic);
   }
   function passwordClickHandler(event) {
     setPassword(event.target.value);
     setLabelPassword("");
   }
-  // function for Handle submit 
+
+  // function for fetch detail & display dashboard
+  function identifyEmployee(credentials) {
+    // should handle
+    // fetch(
+    //   `http://localhost:8002/customer/getcustomer/${credentials.enteredEmail}`,
+    //   {
+    //     method: "GET",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     // body: JSON.stringify(passingData),
+    //   }
+    // )
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     console.log(data);
+
+    //     const customerDetails = [
+    //       "SCR " + data.responseObject.balance,
+    //       data.responseObject.firstName,
+    //       data.responseObject.lastName,
+    //       data.responseObject.accountNumber,
+    //       data.responseObject.accountType,
+    //       data.responseObject.branch_id,
+    //       data.responseObject.nic,
+    //       data.responseObject.address,
+    //       data.responseObject.email,
+    //       data.responseObject.phoneNumber,
+    //       data.responseObject.dob,
+    //     ];
+
+    //     props.onSubmitCredentials(customerDetails);
+    //     // handle the response data here
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //     // handle the error here
+    //     // props.onSumbitWrongAccount(toAcc);
+    //   });
+    // props.onSubmitCredentials(credentials);
+  }
+
+  // function for === HANDLE SUBMIT ===
   function submitHandler(event) {
     event.preventDefault();
 
     const credentials = {
-      enteredEmail: email,
+      enteredNic: nic,
       enteredPassword: password,
     };
     props.onSubmitCredentials(credentials);
-    setEmail("");
+    setNic("");
     setPassword("");
-    setLabelEmail("email");
+    setLabelNic("nic");
     setLabelPassword("password");
-  };
+
+    // fetch(`http://localhost:8002/employee/login/${nic}`, {
+    //   method: "GET",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   // body: JSON.stringify(passingData),
+    // })
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     console.log(data);
+
+    //     if (
+    //       data.responseMessage === "credential found" &&
+    //       data.responseObject === password
+    //     ) {
+    //       identifyEmployee(credentials);
+    //     } else {
+    //       const message =
+    //         "Entered NIC number and Password not valid! Please Enter Correct Username and Password.";
+    //       props.errorTrigger(message);
+    //     }
+    //     // handle the response data here
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //     // handle the error here
+    //     // props.onSumbitWrongAccount(toAcc);
+    //   });
+
+    props.onSubmitCredentials(credentials);
+  }
 
   return (
     <div className={styles.loginFrame}>
@@ -42,7 +116,7 @@ function EmployeeLoginPage(props) {
       <form>
         <input
           type="text"
-          value={email}
+          value={nic}
           className={styles.emailInput}
           onChange={emailClickHandler}
         />
@@ -59,7 +133,7 @@ function EmployeeLoginPage(props) {
       </form>
 
       {/* input boxes */}
-      <div className={styles.email}>{labelEmail}</div>
+      <div className={styles.email}>{labelNic}</div>
       <div className={styles.password}>{labelPassword}</div>
 
       <img className={styles.logo} alt="logo" src={logo} />
