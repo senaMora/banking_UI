@@ -38,8 +38,8 @@ function LoginPage(props) {
       <img className={styles.logo} alt="logo" src={logo} />
 
       <div className={styles.coreBankingSystemContainer}>
-        <p className={styles.coreBanking}>Core Banking</p>
-        <p className={styles.coreBanking}>System</p>
+        <p className={styles.coreBanking}>Welcome to</p>
+        <p className={styles.coreBanking}>Gringotts</p>
       </div>
     </div>
   );
